@@ -1,1 +1,0 @@
-# seneren.github.io
