@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vCard - Personal Portfolio</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatars">
+          <img src="./assets/images/eren.png" alt="Eren Șen" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Eren Șen">Eren Şen</h1>
+
+          <p class="title">Data Science | AI | ML</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show contact details</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contact-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">E-mail</p>
+              
+              <a href="mailto:erensen@aol.com" class="contact-link">erensen@aol.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+9054444****" class="contact-link">+90 (544) 443 ****</a>
+            </div>
+
+          </li>
+
+
+
+          <!--
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+
+              <time datetime="1982-06-23">DOB</time>
+            </div>
+
+          </li>
+
+           -->
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address></address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <!--
+          <li class="social-item">
+            <a href="#" class="social-link">
+              <ion-icon class = "socials-icons" name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+          -->
+
+          <!--
+          <li class="social-item"></li>
+            <a href="#" class="social-link">
+              <ion-icon class = "socials-icons" name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+          -->
+
+          <li class="social-item">
+            <a href="https://twitter.com/saint_sen" class="social-link" target="_blank">
+              <ion-icon class = "socials-icons" name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+
+         <li class="social-item">
+            <a href="https://github.com/seneren" class="social-link" target="_blank">
+              <ion-icon class="socials-icons" name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/erensen/" class="social-link" target="_blank">
+              <ion-icon class = "socials-icons" name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+          
+
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Blog</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            Hello, I'm <b>Eren</b>. I'm a mathematics and data professional specializing in 
+            AI/ML solutions and data analysis. With experience spanning both the US and Türkiye, 
+            I bring a unique cross-cultural perspective to my work. I specialize in developing 
+            AI-driven solutions, focusing on data preprocessing and visualization. My expertise 
+            includes working with Generative AI and prompt engineering to create efficient, scalable solutions. 
+          </p>
+
+          <p>
+            My approach combines rigorous mathematical analysis with practical technical skills, 
+            allowing me to turn complex data into actionable insights. With a strong foundation in 
+            mathematics and statistical methodologies, I help organizations make data-driven decisions that drive results.
+          </p>
+
+          <div class="cta-section">
+            <p>
+                <strong>Looking to collaborate?</strong> <br>
+                Explore my <a style="display: inline" class="colorlink" href="#portfolio">portfolio</a> to see my projects in action, or 
+                <a style="display: inline" class="colorlink" href="#contact">reach out directly</a> to discuss potential opportunities.
+            </p>
+            
+            <p>
+                <strong>Interested in data science insights?</strong> <br>
+                Visit my <a style="display: inline" class="colorlink" href="#blog">blog</a> where I share analysis, methodologies, and industry perspectives.
+            </p>
+            
+            <p>
+                <strong>Need my professional background?</strong> <br>
+                Review my <a style="display: inline" class="colorlink" href="#resume">full resume</a> for detailed experience and qualifications.
+            </p>
+        </div>
+<!--
+          <p>
+            My job is to build your website so that it is functional and user-friendly but at the same time attractive.
+            Moreover, I
+            add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
+            across your
+            message and identity in the most creative way. I created web design for many famous brand companies.
+          </p>
+-->
+        </section>
+
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+           <h3 class="h3 service-title">What I'm Doing</h3>
+
+          <ul class="service-list">
+
+
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+                <figure class="service-icon-box">
+                  <ion-icon name="stats-chart-sharp"></ion-icon>
+                </figure>
+                <h4 class="h4 service-item-title" data-testimonials-title>Data Analysis</h4>
+                <div class="service-item-text" data-testimonials-text>
+                  <p>
+                    I specialize in developing AI-driven solutions, focusing on data preprocessing and visualization. My expertise includes working with Generative AI and prompt engineering to create efficient, scalable solutions.
+                  </p>
+                  <span class="read-more card-only"><ion-icon name="expand"></ion-icon></span>
+                </div>
+              </div>
+            </li>
+            
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+                <figure class="service-icon-box">
+                  <ion-icon name="logo-python"></ion-icon>
+                </figure>
+                <h4 class="h4 service-item-title" data-testimonials-title>Python-based Projects</h4>
+                <div class="service-item-text" data-testimonials-text>
+                  <p>
+                    I have experience in developing Python-based projects, including data analysis, machine learning, and AI solutions. I specialize in creating efficient, scalable solutions that drive results.
+                  </p>
+                  <span class="read-more card-only"><ion-icon name="expand"></ion-icon></span>
+                </div>
+              </div>
+            </li>
+            
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+                <figure class="service-icon-box">
+                  <ion-icon name="book-sharp"></ion-icon>
+                </figure>
+                <h4 class="h4 service-item-title" data-testimonials-title>School Support</h4>
+                <div class="service-item-text" data-testimonials-text>
+                  <p>
+                    Support training for students who have difficulty in school mathematics lessons.
+                  </p>
+                  <span class="read-more card-only"><ion-icon name="expand"></ion-icon></span>
+                </div>
+              </div>
+            </li>
+            
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+                <figure class="service-icon-box">
+                  <ion-icon name="school-sharp"></ion-icon>
+                </figure>
+                <h4 class="h4 service-item-title" data-testimonials-title>University Course Support</h4>
+                <div class="service-item-text" data-testimonials-text>
+                  <p>
+                    Support training focused on understanding and interpretation for Calculus, Analytic Geometry, Group Theory, Basic and Advanced Algebra, Number Theory, Topology (Algebraic, Geometric) courses.
+                  </p>
+                  <span class="read-more card-only"><ion-icon name="expand"></ion-icon></span>
+                </div>
+              </div>
+            </li>
+           
+
+
+
+
+
+
+            <!--
+
+            <li class="testimonials-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg
+                " alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">LGS Preparation Training</h4>
+
+                <p class="service-item-text">
+                  8. sınıf konularının tamamını, ezberlemeden, olması gerektiği gibi, inşa edici ve tanıtıcı yaklaşımla sunma.
+                </p>
+              </div>
+
+            </li>
+
+            -->
+
+
+
+
+
+
+
+            <!--
+
+            <li class="testimonials-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">YKS Preparation Training</h4>
+
+                <p class="service-item-text">
+                  TYT ve AYT Matematik için anlama, kavrama ve yorumlama odaklı sınava hazırlık eğitimi.
+                </p>
+              </div>
+
+            </li>
+
+
+            -->
+
+
+            <!--
+
+            <li class="testimonials-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Okula Destek</h4>
+
+                <p class="service-item-text">
+                  Okul matematik dersinde zorluk çeken öğrenci için destek eğitimi. 
+                </p>
+              </div>
+
+            </li>
+
+            -->
+
+
+            <!--
+
+            <li class="testimonials-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Üniversite Derslerine Destek</h4>
+
+                <p class="service-item-text">
+                  Kalkülüs, Analitik Geometri, Grup Teori, Temel ve İleri Cebir Sayılar Teorisi, Topoloji (Cebirsel, Geometrik) dersleri için kavrama ve yorumlama odaklı destek eğitimi
+                </p>
+              </div>
+
+            </li>
+
+            -->
+
+
+
+
+            <!--
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="service-icon-box">
+                  <img src="./assets/images/icon-app.svg" alt="KPSS, ALES, DGS" width="40" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 service-item-title" data-testimonials-title>KPSS, ALES, DGS</h4>
+
+                <div class="service-item-text" data-testimonials-text>
+                  <p>
+                    Goal-oriented exam training with a tactical approach for candidates who feel lacking in mathematics, without skipping the basics.
+                  </p>
+                   <span class="read-more card-only"><ion-icon name="expand"></ion-icon></span>
+                </div>
+
+              </div>
+            </li>
+
+            -->
+
+
+
+
+
+            <!--
+
+            <li class="testimonials-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">KPSS, ALES, DGS</h4>
+
+                <p class="service-item-text">
+                  Matematikte eksik hisseden adaylara amaç odaklı, altyapıyı es geçmeden, taktik yaklaşımlı sınav eğitimi. 
+                </p>
+              </div>
+
+            </li>
+
+            -->
+
+
+
+
+
+
+            <!--
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="service-icon-box">
+                  <img src="./assets/images/icons-edu.png" alt="Yurtdışı Hazırlık Eğitimi" width="40" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 service-item-title" data-testimonials-title>Yurtdışı Hazırlık Eğitimi</h4>
+
+                <div class="service-item-text" data-testimonials-text>
+                  <p>
+                    Yurtdışındaki üniversiteler için gerekli olan SAT, GRE, IB (SL - HL) sınavlarına hazırlık için eğitim. 
+                  </p>
+                   <span class="read-more card-only"><ion-icon name="expand"></ion-icon></span>
+                </div>
+
+              </div>
+            </li>
+            -->
+
+
+
+            <!--
+
+            <li class="testimonials-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Yurtdışı Hazırlık Eğitimi</h4>
+
+                <p class="service-item-text">
+                  Yurtdışındaki üniversiteler için gerekli olan SAT, GRE, IB (SL - HL) sınavlarına hazırlık için eğitim.
+                </p>
+              </div>
+
+            </li>
+
+            -->
+
+
+
+
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials
+        -->
+
+
+        
+
+        <section class="testimonials">
+
+          <h3 class="h3 testimonials-title">Testimonials</h3>
+
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+  
+                <!-- activate if you want avatar on testimonial
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
+                </figure>
+
+                --> 
+
+
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Blair McCann</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                  <span class="read-more card-only"><ion-icon name="expand"></ion-icon></span>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+
+                <!-- activate if you want avatar on testimonial
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
+                </figure>
+
+                --> 
+
+
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jade Smith</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Metus sodales volutpat curae nec; hendrerit hendrerit sapien. 
+                    Venenatis malesuada aliquet mollis vivamus neque. Aliquet fames malesuada montes netus congue sodales praesent. 
+                    Blandit turpis magna primis; leo dis suscipit himenaeos sapien quam. 
+                  </p>
+                  <span class="read-more card-only"><ion-icon name="expand"></ion-icon></span>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+
+                <!-- activate if you want avatar on testimonial
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
+                </figure>
+
+                -->
+
+
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily James</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Tempus semper et accumsan non placerat libero. Cras hac netus nisl per non fringilla. 
+                    Interdum diam magna metus, himenaeos massa amet. Sem cubilia platea suspendisse consectetur porta et senectus torquent. 
+                    Donec velit leo orci auctor lectus ultrices curae. 
+                  </p>
+                  <span class="read-more card-only"><ion-icon name="expand"></ion-icon></span>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+
+                <!-- activate if you want avatar on testimonial
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
+                </figure>
+
+                -->
+
+
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>William Hershey</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                  <span class="read-more card-only"><ion-icon name="expand"></ion-icon></span>
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+
+        
+
+
+        <!--
+          - testimonials modal
+        -->
+
+
+        
+
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+
+
+            <!--  activate if you want avatar and quotation img in testimonial modal.
+
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+              </figure>
+
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+            </div>
+
+            -->
+
+
+            <div class="modal-content">
+
+              <h4 class="h3 modal-title" data-modal-title>LGS Hazırlık Eğitimi</h4>
+
+
+              <!--
+
+              <time datetime="2021-06-14">14 June, 2021</time>
+
+              -->
+
+              <div data-modal-text>
+                <p>
+                  EXAMPLE TEXT
+                  
+                </p>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+        
+
+
+        <!--
+          - clients
+        -->
+
+
+        <!--
+        
+        <section class="clients">
+
+          <h3 class="h3 testimonials-title">Clients</h3>
+
+          <ul class="clients-list has-scrollbar">
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-1-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-2-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-3-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-4-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-5-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-6-color.png" alt="client logo">
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+        -->
+
+
+        
+
+      </article>
+
+
+
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article id="resume" class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Professional Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Data Support Associate</h4>
+              <span class="timeline-details">
+                <span class="institution-name">OfferUP | </span> Atlanta, GA, US & remote
+                <span class="timeline-date">Sep 2023 — Aug 2024</span>
+              </span>
+              <p class="timeline-text">
+                • Developed Python scripts (Pandas, NumPy) for data wrangling and preprocessing, improving data quality<br>
+                • Performed exploratory data analysis (EDA) using Python, identifying key trends for strategic decision-making<br>
+                • Automated repetitive data tasks using Python scripts, boosting team productivity<br>
+                • Conducted A/B testing and delivered reports, enhancing customer satisfaction<br>
+                • Created data visualizations & reports using Matplotlib and Plotly
+              </p>
+            </li>
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Data Intern</h4>
+               <span class="timeline-details">
+                <span class="institution-name">OfferUP |</span> Atlanta, GA, US
+                <span class="timeline-date">Summer 2023</span>
+              </span>
+              <p class="timeline-text">
+                • Assisted in data cleaning and preprocessing using Python (Pandas)<br>
+                • Supported visualization tasks using Matplotlib and Plotly<br>
+                • Documented workflows, streamlining team knowledge sharing
+              </p>
+            </li>
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Graduate Student Assistant: Data & Database Support</h4>
+              <span class="timeline-details">
+                <span class="institution-name">Office of Information Technology - OIT |</span> The University of Alabama
+                <span class="timeline-date">Spring 2023</span>
+              </span>
+              <p class="timeline-text">
+                • Cooperated with database workflows, using Python-based data pipelines and SQL<br>
+                • Provided analytical insights to optimize code efficiency<br>
+                • Collaborated with DBAs to refine Python scripts, strengthening system performance<br>
+                • Gained hands-on exposure with database administration tools
+              </p>
+            </li>
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Graduate Teaching Assistant</h4>
+              <span class="timeline-details">
+                <span class="institution-name">The University of Alabama |</span> Tuscaloosa, AL, US
+                <span class="timeline-date">Aug 2022 — May 2023</span>
+              </span>
+              <p class="timeline-text">
+                • Completed university's postgraduate education training program for effective teaching methods<br>
+                • Taught mathematics courses including Pre-Calculus, Calculus, and Discrete Mathematics<br>
+                • Managed coursework and progress tracking for 120 students across 4 groups<br>
+                • Directed weekly problem-solving sessions, increasing student performance by 20%<br>
+                • Evaluated assignments and exams, maintaining a 95% accuracy rate
+              </p>
+            </li>
+        
+            
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Mathematics Teacher</h4>
+              <span class="timeline-details">
+                <span class="institution-name">Various Institutions |</span> TR
+                <span class="timeline-date">2016 — 2017</span>
+              </span>
+              <p class="timeline-text">
+                Taught mathematics at secondary education level while transitioning into data science and technology.
+              </p>
+            </li>
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Program Supervisor & Assistant (Volunteer)</h4>
+              <span class="timeline-details">
+                <span class="institution-name">Nesin Mathematics Village |</span> Şirince, TR
+                <span class="timeline-date">2014 — 2017</span>
+              </span>
+              <p class="timeline-text">
+                • Led groups of 15-20 high school students in intensive two-week mathematics programs<br>
+                • Ensured program schedule compliance, health monitoring, and attendance tracking<br>
+                • Provided subject comprehension support and problem-solving assistance<br>
+                • Coordinated daily activities and improved program efficiency<br>
+                • Assisted with mathematics instruction under renowned professors Ali Nesin and Mustafa Yağcı
+              </p>
+            </li>
+
+
+
+            
+
+          </ol>
+
+        </section>
+
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Ph.D. in Mathematics</h4>
+              <span class="timeline-details">
+                <span class="institution-name">The University of Alabama | </span> Tuscaloosa, AL, US
+                <span class="timeline-date">2024</span>
+              </span>
+              <p class="timeline-text">
+                I conducted research in Geometric Topology, specializing in Contact Geometry, 
+                under the guidance of my advisor <a href="https://btosun.people.ua.edu" class="inline-block" target="_blank" rel="noopener noreferrer">Bülent Tosun</a>.
+                During my doctoral studies, I served as an assistant instructor, 
+                teaching undergraduate mathematics courses while pursuing my research interests, before discontinuing the program in 2024.
+              </p>
+            </li>
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">M.Sc. in Mathematics</h4>
+               <span class="timeline-details">
+                <span class="institution-name">Middle East Technical University |</span> Ankara, TR
+                <span class="timeline-date">2022</span>
+              </span>
+              <p class="timeline-text">
+                I worked on geometric topology with my advisor <a href="https://users.metu.edu.tr/bhupal/" class="inline-block" target="_blank" rel="noopener noreferrer">Mohan Bhupal</a> during my master's program and completed my thesis titled "<a href="https://open.metu.edu.tr/handle/11511/98103" class="inline-block" target="_blank" rel="noopener noreferrer">Trisections of Smooth 4-Manifolds</a>".
+              </p>
+            </li>
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">B.Sc. in Mathematics</h4>
+              <span class="timeline-details">
+                <span class="institution-name">Ege University |</span>İzmir, TR
+                <span class="timeline-date">2016</span>
+              </span>
+              <p class="timeline-text">
+                I completed my undergraduate degree in Mathematics with a concentration in Theoretical Mathematics.
+                In 2017, I completed my Pedagogical Formation training at the same university.
+              </p>
+            </li>
+
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Statistics</h4>
+              <span class="timeline-details">
+                <span class="institution-name">Ondokuz Mayıs University |</span> Samsun, TR
+                <span class="timeline-date">2012</span>
+              </span>
+              <p class="timeline-text">
+                Completed coursework in Statistics, including regression analysis, probability theory, hypothesis testing, game theory, and advanced statistical methods.
+              </p>
+            </li>
+
+     
+
+          </ol>
+
+        </section>
+
+
+
+
+<!--
+        <section class="skill">
+
+          <h3 class="h3 skills-title">Becerilerim</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Web design</h5>
+                <data value="80">80%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Graphic design</h5>
+                <data value="70">70%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Branding</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">WordPress</h5>
+                <data value="50">50%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 50%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+-->
+
+      </article>
+
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Middle School & LGS</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>High School & YKS</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>University Courses</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>GRE, SAT, IB</button>
+            </li>
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select Category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Middle School & LGS</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>High School & YKS</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>University Courses</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>GRE, SAT, IB</button>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item  active" data-filter-item data-category="middle school & lgs">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Finance</h3>
+
+                <p class="project-category">Middle School & LGS</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="high school & yks">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Orizon</h3>
+
+                <p class="project-category">High School & YKS</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="middle school & lgs">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Fundo</h3>
+
+                <p class="project-category">Middle School & LGS</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="high school & yks">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Brawlhalla</h3>
+
+                <p class="project-category">High School & YKS</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="university courses">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
+                </figure>
+
+                <h3 class="project-title">DSM.</h3>
+
+                <p class="project-category">University Courses</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="gre, sat, ib">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">MetaSpark</h3>
+
+                <p class="project-category">GRE, SAT, IB</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="üniversite dersleri">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Summary</h3>
+
+                <p class="project-category">Üniversite Dersleri</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="gre, sat, ib">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Task Manager</h3>
+
+                <p class="project-category">GRE, SAT, IB</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="ortaokul & lgs">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Arrival</h3>
+
+                <p class="project-category">Ortaokul & LGS</p>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #BLOG
+      -->
+
+      <article class="blog" data-page="blog">
+
+        <header>
+          <h2 class="h2 article-title">Blog</h2>
+        </header>
+
+        <section class="blog-posts">
+
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/photoo.jpeg" alt="Design conferences in 2022" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">23 Şubat 2024</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Blog Post #1</h3>
+
+                  <p class="blog-text">
+                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/photo1.png" alt="Best fonts every designer" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">23 Mart 2024</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Blog Post #2</h3>
+
+                  <p class="blog-text">
+                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/photocan.png" alt="Design digest #80" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">3 Mayıs 2024</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Blog Post #3</h3>
+
+                  <p class="blog-text">
+                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/photocur.png" alt="UI interactions of the week" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">16 Haziran 2024</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Blog Post #4</h3>
+
+                  <p class="blog-text">
+                    Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">30 Temmuz 2024</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Blog Post #5</h3>
+
+                  <p class="blog-text">
+                    Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/voronai.png" alt="Design digest #79" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">11 Ağustus 2024</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Blog Post #6</h3>
+
+                  <p class="blog-text">
+                    Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1593175.834428312!2d26.794884739557826!3d38.74829867870805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b839f1d676e4e9%3A0xd7c0a92dad794077!2sManisa%2C%20T%C3%BCrkiye!5e0!3m2!1sen!2sbd!4v1726945679661!5m2!1sen!2sbd"
+              width="400" height="300" loading="lazy"></iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+          <form action="#" class="form" data-form>
+
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Your Name" required data-form-input>
+
+              <input type="email" name="email" class="form-input" placeholder="Your Email" required data-form-input>
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon & Font Awesome link
+  -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
