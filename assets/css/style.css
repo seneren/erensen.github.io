@@ -794,6 +794,22 @@ main {
   scroll-snap-type: inline mandatory;
 }
 
+.testimonials-list {
+    /* Existing styles for testimonials-list */
+    overflow-x: auto; /* Ensure horizontal scrollbar */
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+}
+
+.testimonials-list::-webkit-scrollbar {
+    height: 5px; /* Horizontal scrollbar height */
+    background-color: var(--purple-seduction); /* Ensure proper color rendering */
+}
+
+.testimonials-list::-webkit-scrollbar-thumb {
+    background-color: var(--purple-seduction);
+    border-radius: 10px; /* Smooth thumb appearance */
+}
+
 .testimonials-item {
   min-width: 100%;
   scroll-snap-align: center;
