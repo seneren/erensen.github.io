@@ -794,6 +794,9 @@ main {
   scroll-snap-type: inline mandatory;
 }
 
+.testimonials-list.has-scrollbar {
+    overflow-x: scroll !important;
+}
 
 .testimonials-item {
   min-width: 100%;
