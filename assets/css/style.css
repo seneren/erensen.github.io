@@ -713,7 +713,7 @@ main {
 .service-icon-box ion-icon {
   color: var(--purple-seduction);
   font-size: 35px; /* Adjust size as needed */
-  margin-left: 155px; /* Keep your existing margin */
+  margin-left: 15px; /* Keep your existing margin */
 }
 
 
