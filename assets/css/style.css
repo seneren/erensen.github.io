@@ -1567,6 +1567,16 @@ color: var(--light-muted-purple); }
     margin-bottom: -5px;
   }
 
+  .testimonials-list::-webkit-scrollbar {
+    display: block; /* Override the hidden scrollbar */
+    width: 5px;
+    height: 5px;
+  }
+  .testimonials-list::-webkit-scrollbar-thumb {
+     background: var(--purple-seduction);
+      border-radius: 5px;
+  }
+
   
   .clients-item { min-width: calc(33.33% - 10px); }
 
