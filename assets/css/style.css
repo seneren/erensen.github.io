@@ -792,6 +792,8 @@ main {
   scroll-behavior: smooth;
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
+  -webkit-overflow-scrolling: touch;
+}
 }
 
 .testimonials-list.has-scrollbar {
