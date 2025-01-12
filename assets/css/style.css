@@ -876,7 +876,7 @@ main {
   visibility: hidden;
 }
 
-.modal-container::-webkit-scrollbar { display: none; }
+/* .modal-container::-webkit-scrollbar { display: none; } */
 
 .modal-container.active {
   pointer-events: all;
@@ -2231,7 +2231,7 @@ color: var(--light-muted-purple); }
 
   body::-webkit-scrollbar-thumb {
     border: 5px solid var(--smoky-black);
-    background: red;
+    background: hsla(0, 0%, 100%, 0.1);
     border-radius: 20px;
     box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
                 inset -1px -1px 0 hsla(0, 0%, 100%, 0.11);
