@@ -794,22 +794,6 @@ main {
   scroll-snap-type: inline mandatory;
 }
 
-.testimonials-list {
-    overflow-x: scroll; /* Always show the horizontal scrollbar */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS */
-    width: 100%; /* Explicit width to ensure proper layout */
-    max-width: 100%; /* Prevent overflow beyond parent container */
-}
-
-.testimonials-list::-webkit-scrollbar {
-    height: 8px; /* Visible scrollbar */
-    background-color: var(--purple-seduction);
-}
-
-.testimonials-list::-webkit-scrollbar-thumb {
-    background-color: var(--purple-seduction);
-    border-radius: 4px;
-}
 
 .testimonials-item {
   min-width: 100%;
