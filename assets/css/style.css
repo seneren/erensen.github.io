@@ -795,19 +795,20 @@ main {
 }
 
 .testimonials-list {
-    /* Existing styles for testimonials-list */
-    overflow-x: auto; /* Ensure horizontal scrollbar */
-    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+    overflow-x: scroll; /* Always show the horizontal scrollbar */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS */
+    width: 100%; /* Explicit width to ensure proper layout */
+    max-width: 100%; /* Prevent overflow beyond parent container */
 }
 
 .testimonials-list::-webkit-scrollbar {
-    height: 5px; /* Horizontal scrollbar height */
-    background-color: var(--purple-seduction); /* Ensure proper color rendering */
+    height: 8px; /* Visible scrollbar */
+    background-color: var(--purple-seduction);
 }
 
 .testimonials-list::-webkit-scrollbar-thumb {
     background-color: var(--purple-seduction);
-    border-radius: 10px; /* Smooth thumb appearance */
+    border-radius: 4px;
 }
 
 .testimonials-item {
