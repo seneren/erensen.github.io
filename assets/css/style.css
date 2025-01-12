@@ -876,7 +876,17 @@ main {
   visibility: hidden;
 }
 
-/* .modal-container::-webkit-scrollbar { display: none; } */
+.modal-container::-webkit-scrollbar { display: none; }
+
+.testimonials-list::-webkit-scrollbar {
+  display: block; /* Override the hidden scrollbar */
+  width: 5px;
+  height: 5px;
+}
+.testimonials-list::-webkit-scrollbar-thumb {
+  background: var(--purple-seduction);
+  border-radius: 5px;
+}
 
 .modal-container.active {
   pointer-events: all;
