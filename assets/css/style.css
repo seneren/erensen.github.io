@@ -4,10 +4,14 @@
 
 
 /**
- * copyright 2022 @codewithsadee
+ *  This css is created by @codewithsadee
+    and modified by Eren, github.com/seneren
  */
-
-
+ 
+ /**
+ * 
+    2025
+ */
 
 
 
@@ -371,7 +375,7 @@ article.active {
 \*-----------------------------------*/
 
 main {
-  margin: 15px 12px;
+  margin: 15px 15px;
   margin-bottom: 75px;
   min-width: 259px;
 }
@@ -713,7 +717,8 @@ main {
 .service-icon-box ion-icon {
   color: var(--purple-seduction);
   font-size: 35px; /* Adjust size as needed */
-  margin-left: 15px; /* Keep your existing margin */
+  margin-top: -25px;
+  margin-left: 0px; /* Keep your existing margin */
 }
 
 
@@ -725,6 +730,7 @@ main {
 
 .service-item-title {
   position: relative;
+  margin-top: -40px;
   margin-bottom: 7px; 
   margin-left: 45px;
 }
@@ -1509,10 +1515,10 @@ color: var(--light-muted-purple); }
 \*-----------------------------------*/
 
 /**
- * responsive larger than 450px screen
+ * responsive larger than 480px screen
  */
 
-@media (min-width: 450px) {
+@media (min-width: 480px) {
 
 
 
@@ -1562,17 +1568,17 @@ color: var(--light-muted-purple); }
 
   .service-icon-box {
     margin-bottom: 0px;
-    margin-top: -40px;
-    transform: translate(-155px, 9px);
+    margin-top: -35px;
+    transform: translate(-10px, 10px);
   }
 
   .service-item-title {
-    margin-left: 45px;
+    margin-left: 35px;
     margin-top: -20px;
   }
   
   .service-item-text {
-    padding-left: 0px;
+    margin-left: -10px;
   }
 
   .content-card {
@@ -1722,12 +1728,6 @@ color: var(--light-muted-purple); }
     font-weight: var(--fw-300);
   }
 
-  
-  .service-item-text {
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
-  }
-
 
   .separator { margin: 32px 0; }
 
@@ -1780,14 +1780,21 @@ color: var(--light-muted-purple); }
 
   .service-icon-box {
     margin-bottom: -30px;
-    margin-top: -10px;
-    transform: translate(-155px, 0px);
+    margin-top: 10px;
+    transform: translate(-10px, 10px);
   }
 
   .service-item-title {
-    margin-left: 45px;
-    margin-top: -20px;
+    font-size: 16px;
+    margin-left: 35px;
+    margin-top: 10px;
   }
+
+  .service-item-text {
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+  }
+  
 
   .service-content-box { text-align: left; }
 
@@ -1957,23 +1964,7 @@ color: var(--light-muted-purple); }
    * REUSED STYLE
    */
 
-  .sidebar {
-    max-height: 185px;
-  }
-  .sidebar, article {
-    width: 700px;
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  .sidebar {
-    padding-top: 30px;
-  }
-  
-  .sidebar-info {
-    margin-bottom: -10px;
-  }
-
+ 
   .has-scrollbar::-webkit-scrollbar-button { width: 100px; }
 
 
@@ -1982,11 +1973,27 @@ color: var(--light-muted-purple); }
    * SIDEBAR
    */
 
+  .sidebar {
+    max-height: 185px;
+    padding-top: 30px;
+  }
+
   .sidebar article {
     padding-top: 15px;
     padding-left: 30px;
     padding-right: 30px;
   }
+
+  .sidebar, article {
+    width: 700px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .sidebar-info {
+    margin-bottom: -10px;
+  }
+
 
 
   .contacts-list {
