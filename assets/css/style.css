@@ -1683,6 +1683,8 @@ color: var(--light-muted-purple); }
   main {
     margin-top: 15px;
     margin-bottom: 80px;
+    margin-left: 15px;
+    margin-right: 15px;
   }
 
 
@@ -2019,7 +2021,7 @@ color: var(--light-muted-purple); }
   }
 
   .sidebar, article {
-    width: 700px;
+    width: 740px;
     padding-left: 30px;
     padding-right: 30px;
   }
