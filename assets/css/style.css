@@ -1108,6 +1108,7 @@ main {
 
 .timeline-date {
   margin-left: auto; /* Pushes the date to the right */
+  transform: translate(0, 0.5px);
   font-size: 8px !important;
   font-style: normal !important;
 }
@@ -1115,6 +1116,7 @@ main {
 .institution-name {
   color: var(--purple-seduction) !important;
   position: relative;
+  transform: translate(0, -3px);
   font-style: normal !important;
   font-size: 12px !important;
   font-weight: var(--fw-600) !important;
