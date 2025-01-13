@@ -1091,7 +1091,7 @@ main {
 
 .timeline-text {
   color: var(--dark-gray);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: var(--fw-800);
   line-height: 1.6;
   max-width: 100%;
@@ -1116,7 +1116,7 @@ main {
 .institution-name {
   color: var(--purple-seduction) !important;
   position: relative;
-  transform: translate(0, -1px);
+  transform: translate(0, -2px);
   font-style: normal !important;
   font-size: 12px !important;
   font-weight: var(--fw-600) !important;
