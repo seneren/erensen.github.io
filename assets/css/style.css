@@ -1116,7 +1116,7 @@ main {
 .institution-name {
   color: var(--purple-seduction) !important;
   position: relative;
-  transform: translate(0, -3px);
+  transform: translate(0, -2px);
   font-style: normal !important;
   font-size: 12px !important;
   font-weight: var(--fw-600) !important;
