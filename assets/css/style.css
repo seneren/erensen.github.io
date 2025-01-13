@@ -1097,6 +1097,18 @@ main {
   max-width: 100%;
 }
 
+.timeline-text li {
+  display: flex; /* Use flexbox for alignment */
+  align-items: flex-start; /* Align bullet and text to the top */
+}
+
+.timeline-text li::before {
+  content: "•";
+  margin-right: 3px;
+  flex-shrink: 0; /* Prevent the bullet from shrinking */
+}
+
+
 
 .timeline-details {
   display: flex;
