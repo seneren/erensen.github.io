@@ -303,7 +303,13 @@ selectBtns.forEach(btn => {
 
 // Project item click handling
 projectItems.forEach(item => {
-  item.addEventListener('click', function() {
+  item.addEventListener('click', function(e) {
+    if (projectList.classList.contains('viewing-single')) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+
     if (!item.classList.contains('active')) return;
 
     // Hide all other project items
@@ -325,14 +331,22 @@ projectItems.forEach(item => {
     // Add viewing-single class to project list
     projectList.classList.add('viewing-single');
 
-    // Get and position the title
-    const projectTitle = item.querySelector('.project-title');
-    projectTitle.classList.add('single-view');
+    // Create and position a new title element
+    const originalTitle = item.querySelector('.project-title');
+    const singleViewTitle = document.createElement('h3');
+    singleViewTitle.textContent = originalTitle.textContent;
+    singleViewTitle.className = 'project-title single-view';
+    
+    // Hide the original title
+    originalTitle.style.visibility = 'hidden';
+    
+    // Add the new title to the project list
+    projectList.insertBefore(singleViewTitle, projectList.firstChild);
     
     // Position title to align with back button vertically
     const backButtonRect = goBackContainer.getBoundingClientRect();
     const projectListRect = projectList.getBoundingClientRect();
-    projectTitle.style.top = `${backButtonRect.top - projectListRect.top}px`;
+    singleViewTitle.style.top = `${backButtonRect.top - projectListRect.top}px`;
 
     // Show project content
     const projectContent = item.querySelector('.project-content');
@@ -342,7 +356,7 @@ projectItems.forEach(item => {
   });
 });
 
-// Back button functionality
+// Update back button functionality
 goBackContainer.addEventListener('click', () => {
   // Get current active filter
   const activeFilter = document.querySelector('[data-filter-btn].active');
@@ -363,10 +377,14 @@ goBackContainer.addEventListener('click', () => {
   // Remove viewing-single class
   projectList.classList.remove('viewing-single');
 
-  // Reset all project titles
+  // Remove single view title and show original titles
+  const singleViewTitle = document.querySelector('.project-title.single-view');
+  if (singleViewTitle) {
+    singleViewTitle.remove();
+  }
+  
   document.querySelectorAll('.project-title').forEach(title => {
-    title.classList.remove('single-view');
-    title.style.top = '';
+    title.style.visibility = '';
   });
 
   // Hide all project content
