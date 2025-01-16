@@ -220,12 +220,23 @@ window.onhashchange = function () {
 
 window.onhashchange(undefined);
 
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
+// Update the navigation link click handler
+navigationLinks.forEach(link => {
+  link.addEventListener("click", function () {
     location.hash = this.innerHTML.toLowerCase();
 
-    if (this.innerHTML.toLowerCase() === 'portfolio' && pages[i].classList.contains('active')) {
+    if (this.innerHTML.toLowerCase() === 'portfolio') {
+      // Clean up single view if active
+      const singleViewTitle = document.querySelector('.project-title.single-view');
+      if (singleViewTitle) {
+        singleViewTitle.remove();
+      }
+      
+      // Show all original titles
+      document.querySelectorAll('.project-title').forEach(title => {
+        title.style.visibility = '';
+      });
+
       filterProjects('all');
       
       filterBtns.forEach(btn => {
@@ -257,7 +268,7 @@ for (let i = 0; i < navigationLinks.length; i++) {
       });
     }
   });
-}
+});
 
 // Project and filter functionality
 const projectItems = document.querySelectorAll('.project-item');
