@@ -266,6 +266,14 @@ navigationLinks.forEach(link => {
           projectContent.style.display = 'none';
         }
       });
+
+      // Clean up categories
+      document.querySelectorAll('.project-category').forEach(category => {
+        category.style.visibility = '';
+      });
+      document.querySelectorAll('.project-category.single-view').forEach(category => {
+        category.remove();
+      });
     }
   });
 });
@@ -312,7 +320,7 @@ selectBtns.forEach(btn => {
   });
 });
 
-// Project item click handling
+// Update the project item click handler
 projectItems.forEach(item => {
   item.addEventListener('click', function(e) {
     if (projectList.classList.contains('viewing-single')) {
@@ -363,6 +371,19 @@ projectItems.forEach(item => {
     const projectContent = item.querySelector('.project-content');
     if (projectContent) {
       projectContent.style.display = 'block';
+      
+      // Move and update category
+      const originalCategory = item.querySelector('.project-category');
+      originalCategory.style.visibility = 'hidden';
+      
+      // Create new category element
+      const categoryText = originalCategory.textContent;
+      const categoryContainer = document.createElement('p');
+      categoryContainer.className = 'project-category single-view';
+      categoryContainer.innerHTML = `<span class="category-label">Category: </span>${categoryText}`;
+      
+      // Insert after project content
+      projectContent.appendChild(categoryContainer);
     }
   });
 });
@@ -404,5 +425,13 @@ goBackContainer.addEventListener('click', () => {
     if (projectContent) {
       projectContent.style.display = 'none';
     }
+  });
+
+  // Show original categories and remove single view categories
+  document.querySelectorAll('.project-category').forEach(category => {
+    category.style.visibility = '';
+  });
+  document.querySelectorAll('.project-category.single-view').forEach(category => {
+    category.remove();
   });
 });

@@ -1366,9 +1366,15 @@ main {
 
 /* Hide all project contents by default */
 .project-content {
-  padding: 10px;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-top: 10px;
+  padding: 15px;
   display: none;
+  border-radius: 14px;
+  color: var(--dark-gray);
 }
+
 
 /* Show the active project content */
 .project-content.active {
@@ -1911,6 +1917,10 @@ color: var(--light-muted-purple); }
 
   .project-list, .blog-posts-list { grid-template-columns: 1fr 1fr; }
 
+  .project-content {
+    padding: 10px !important;
+  }
+
 
 
   /**
@@ -2350,13 +2360,7 @@ color: var(--light-muted-purple); }
 
 }
 
-/* Project content styling */
-.project-content {
-  margin-top: 10px;
-  padding: 15px;
-  border-radius: 14px;
-  color: var(--dark-gray);
-}
+
 
 /* Single view styles */
 .project-title.single-view {
@@ -2418,7 +2422,7 @@ color: var(--light-muted-purple); }
 }
 
 .project-list.viewing-single .project-content {
-  margin-top: 20px;
+  margin-top: -10px;
 }
 
 /* Disable hover effects in single view */
@@ -2443,4 +2447,18 @@ color: var(--light-muted-purple); }
   .project-list.viewing-single .project-img {
     width: 40%;
   }
+}
+
+/* Add styles for category in single view */
+.project-category.single-view {
+  margin-left: 0px;
+  margin-top: 20px;
+  color: var(--dark-gray-70);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+}
+
+.category-label {
+  font-weight: var(--fw-500);
+  color: var(--wet-charcoal);
 }
