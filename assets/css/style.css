@@ -2548,3 +2548,14 @@ color: var(--light-muted-purple); }
 .project-category.single-view .category-value:hover {
   color: var(--iris-euphoria);
 }
+
+/* Add cursor pointer to project items in grid view */
+.project-list:not(.viewing-single) .project-item.active {
+  cursor: pointer;
+}
+
+/* Remove pointer cursor when in single view */
+.project-list.viewing-single .project-item {
+  width: 100%;
+  cursor: default;
+}
