@@ -220,22 +220,41 @@ window.onhashchange = function () {
 
 window.onhashchange(undefined);
 
-// add event to all nav link
+// Add this near the top of your script with other variable declarations
+const portfolioNavLink = document.querySelector('[data-nav-link="portfolio"]');
+
+// Modify the navigation click handler
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
+    // If clicking Portfolio while already on Portfolio page
+    if (this.innerHTML.toLowerCase() === 'portfolio' && 
+        document.querySelector('[data-page="portfolio"]').classList.contains('active')) {
+      // Simulate click on "All" filter button
+      filterBtn[0].click();
+      
+      // Reset view to grid
+      filterList.style.display = window.innerWidth >= 768 ? "flex" : "none";
+      filterSelectBox.style.display = window.innerWidth >= 768 ? "none" : "block";
+      goBackContainer.style.display = "none";
+      
+      // Show all project items
+      projectItems.forEach((projectItem) => {
+        projectItem.classList.add("active");
+      });
+      
+      // Hide all project contents
+      projectContents.forEach((content) => {
+        content.classList.remove("active");
+      });
+      
+      // Remove viewing-single class
+      const projectList = document.querySelector(".project-list");
+      projectList.classList.remove("viewing-single");
+      
+      return; // Skip the regular navigation handling
+    }
 
     location.hash = this.innerHTML.toLowerCase();
-    // for (let i = 0; i < pages.length; i++) {
-    //   if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-    //     pages[i].classList.add("active");
-    //     navigationLinks[i].classList.add("active");
-    //     window.scrollTo(0, 0);
-    //   } else {
-    //     pages[i].classList.remove("active");
-    //     navigationLinks[i].classList.remove("active");
-    //   }
-    // }
-
   });
 }
 
