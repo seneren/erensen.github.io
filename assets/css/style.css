@@ -1354,6 +1354,7 @@ main {
   color: var(--wet-charcoal);
   font-size: var(--fs-5);
   font-weight: var(--fw-400);
+  text-transform: lowercase;
   text-transform: capitalize;
   line-height: 1.3;
 }
@@ -1399,13 +1400,15 @@ main {
   padding-left: 2px;
   height: 28px;
   z-index: 2;
-  cursor: default; /* Change cursor for container */
+  cursor: default;
+  pointer-events: none;
 }
 
 .go-back-icon {
   font-size: 28px;
   color: var(--dark-gray-70);
-  cursor: pointer; /* Keep pointer only on icon */
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .go-back-icon:hover {
@@ -1689,6 +1692,16 @@ color: var(--light-muted-purple); }
     margin-bottom: 44px;
   }
 
+  /* Add two-column grid layout for projects */
+  .project-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  /* Adjust project image height for grid */
+  .project-img {
+    height: 180px;
+  }
 }
 
 
@@ -1886,6 +1899,13 @@ color: var(--light-muted-purple); }
    * PORTFOLIO
    */
 
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-img {
+    height: auto;
+  }
  
   .article-title { padding-bottom: 10px; }
 
@@ -2379,13 +2399,32 @@ color: var(--light-muted-purple); }
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
-  font-size: var(--fs-2);
+  font-size: 20px; /* Base size for mobile */
   font-weight: var(--fw-500);
   color: var(--wet-charcoal);
   z-index: 2;
   width: max-content;
   display: inline-block;
-  cursor: default; /* Prevent cursor from changing to pointer */
+  cursor: default;
+}
+
+/* Media query adjustments */
+@media (min-width: 580px) {
+  .project-title.single-view {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 768px) {
+  .project-title.single-view {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-title.single-view {
+    font-size: 26px;
+  }
 }
 
 /* Container positioning */
@@ -2408,13 +2447,15 @@ color: var(--light-muted-purple); }
   padding-left: 2px;
   height: 28px;
   z-index: 2;
-  cursor: default; /* Change cursor for container */
+  cursor: default;
+  pointer-events: none;
 }
 
 .go-back-icon {
   font-size: 28px;
   color: var(--dark-gray-70);
-  cursor: pointer; /* Keep pointer only on icon */
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .go-back-icon:hover {
