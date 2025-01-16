@@ -1390,24 +1390,25 @@ main {
 /* Back button styling */
 
 .go-back-container {
-  display: none; /* Initially hidden */
-  justify-content: flex-start; /* Align left */
+  display: none;
+  position: relative;
   align-items: center;
   padding-top: -10px;
   margin-bottom: 25px;
   padding-left: 2px;
-  cursor: pointer;
-  position:
-   relative; /* Adjust as needed to match filter-list position */
+  height: 28px;
+  z-index: 2;
+  cursor: default; /* Change cursor for container */
 }
 
 .go-back-icon {
   font-size: 28px;
-  color: var(--dark-gray-70); /* Use your preferred color */
+  color: var(--dark-gray-70);
+  cursor: pointer; /* Keep pointer only on icon */
 }
 
 .go-back-icon:hover {
-  color: var(--iris-euphoria); /* Use your preferred hover color */
+  color: var(--iris-euphoria);
   transition: color 0.3s ease;
 }
 
@@ -2395,9 +2396,20 @@ color: var(--light-muted-purple); }
   padding-top: -10px;
   margin-bottom: 25px;
   padding-left: 2px;
-  cursor: pointer;
   height: 28px;
   z-index: 2;
+  cursor: default; /* Change cursor for container */
+}
+
+.go-back-icon {
+  font-size: 28px;
+  color: var(--dark-gray-70);
+  cursor: pointer; /* Keep pointer only on icon */
+}
+
+.go-back-icon:hover {
+  color: var(--iris-euphoria);
+  transition: color 0.3s ease;
 }
 
 /* Single view layout */
@@ -2461,4 +2473,34 @@ color: var(--light-muted-purple); }
 .category-label {
   font-weight: var(--fw-500);
   color: var(--wet-charcoal);
+}
+
+/* Add cursor pointer to project items in grid view */
+.project-item {
+  cursor: pointer;
+}
+
+/* Remove pointer cursor when in single view */
+.project-list.viewing-single .project-item {
+  width: 100%;
+  cursor: default;
+}
+
+/* Add these styles for the clickable category */
+.project-category.single-view {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.project-category.single-view:hover {
+  color: var(--iris-euphoria);
+}
+
+.project-category.single-view .category-value {
+  color: var(--dark-gray-70);
+  transition: color 0.3s ease;
+}
+
+.project-category.single-view:hover .category-value {
+  color: var(--iris-euphoria);
 }

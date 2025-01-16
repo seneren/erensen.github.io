@@ -289,9 +289,15 @@ const selectBtns = document.querySelectorAll('[data-select-item]');
 function filterProjects(category) {
   projectItems.forEach(item => {
     const itemCategory = item.dataset.category;
+    const projectContent = item.querySelector('.project-content');
+    
     if (category === 'all' || itemCategory === category) {
       item.classList.add('active');
       item.style.display = 'block';
+      // Always hide project content when filtering
+      if (projectContent) {
+        projectContent.style.display = 'none';
+      }
     } else {
       item.classList.remove('active');
       item.style.display = 'none';
@@ -380,10 +386,68 @@ projectItems.forEach(item => {
       const categoryText = originalCategory.textContent;
       const categoryContainer = document.createElement('p');
       categoryContainer.className = 'project-category single-view';
-      categoryContainer.innerHTML = `<span class="category-label">Category: </span>${categoryText}`;
+      categoryContainer.innerHTML = `<span class="category-label">Category: </span><span class="category-value">${categoryText}</span>`;
+      categoryContainer.style.cursor = 'pointer';
       
       // Insert after project content
       projectContent.appendChild(categoryContainer);
+
+      // Add click handler for the category
+      categoryContainer.addEventListener('click', () => {
+        // Get the category text (removing "Category: " prefix)
+        const category = categoryText.toLowerCase();
+        
+        // First navigate to the portfolio page
+        location.hash = 'portfolio';
+        
+        // Wait for the navigation to complete
+        setTimeout(() => {
+          // Remove single view elements
+          const singleViewTitle = document.querySelector('.project-title.single-view');
+          if (singleViewTitle) {
+            singleViewTitle.remove();
+          }
+          
+          // Show all original titles and categories
+          document.querySelectorAll('.project-title, .project-category').forEach(el => {
+            el.style.visibility = '';
+          });
+          
+          // Remove single view categories
+          document.querySelectorAll('.project-category.single-view').forEach(el => {
+            el.remove();
+          });
+          
+          // Show filter elements
+          const filterList = document.querySelector('.filter-list');
+          const filterSelect = document.querySelector('.filter-select-box');
+          if (filterList) filterList.style.display = '';
+          if (filterSelect) filterSelect.style.display = '';
+          
+          // Hide back button
+          goBackContainer.style.display = 'none';
+          
+          // Remove viewing-single class
+          projectList.classList.remove('viewing-single');
+          
+          // Filter projects by the clicked category
+          filterProjects(category);
+          
+          // Update filter buttons UI
+          filterBtns.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.textContent.toLowerCase() === category) {
+              btn.classList.add('active');
+            }
+          });
+          
+          // Update select value for mobile
+          const selectValue = document.querySelector('[data-selecct-value]');
+          if (selectValue) {
+            selectValue.textContent = categoryText;
+          }
+        }, 100); // Small delay to ensure navigation completes
+      });
     }
   });
 });
