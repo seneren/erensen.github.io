@@ -304,7 +304,7 @@ selectBtns.forEach(btn => {
 // Project item click handling
 projectItems.forEach(item => {
   item.addEventListener('click', function() {
-    if (!item.classList.contains('active')) return; // Don't process if item is filtered out
+    if (!item.classList.contains('active')) return;
 
     // Hide all other project items
     projectItems.forEach(otherItem => {
@@ -324,6 +324,15 @@ projectItems.forEach(item => {
 
     // Add viewing-single class to project list
     projectList.classList.add('viewing-single');
+
+    // Get and position the title
+    const projectTitle = item.querySelector('.project-title');
+    projectTitle.classList.add('single-view');
+    
+    // Position title to align with back button vertically
+    const backButtonRect = goBackContainer.getBoundingClientRect();
+    const projectListRect = projectList.getBoundingClientRect();
+    projectTitle.style.top = `${backButtonRect.top - projectListRect.top}px`;
 
     // Show project content
     const projectContent = item.querySelector('.project-content');
@@ -353,6 +362,12 @@ goBackContainer.addEventListener('click', () => {
 
   // Remove viewing-single class
   projectList.classList.remove('viewing-single');
+
+  // Reset all project titles
+  document.querySelectorAll('.project-title').forEach(title => {
+    title.classList.remove('single-view');
+    title.style.top = '';
+  });
 
   // Hide all project content
   projectItems.forEach(item => {

@@ -2358,8 +2358,69 @@ color: var(--light-muted-purple); }
   color: var(--dark-gray);
 }
 
+/* Single view styles */
+.project-title.single-view {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: var(--fs-2);
+  font-weight: var(--fw-500);
+  color: var(--wet-charcoal);
+  z-index: 2;
+  width: max-content;
+  display: inline-block;
+}
 
-/* Disable hover effects when viewing single project */
+/* Container positioning */
+.main-content {
+  position: relative;
+}
+
+.project-list {
+  position: relative;
+  width: 100%;
+}
+
+/* Back button styling */
+.go-back-container {
+  display: none;
+  position: relative;
+  align-items: center;
+  padding-top: -10px;
+  margin-bottom: 25px;
+  padding-left: 2px;
+  cursor: pointer;
+  height: 28px;
+  z-index: 2;
+}
+
+/* Single view layout */
+.project-list.viewing-single {
+  display: block;
+}
+
+.project-list.viewing-single .project-item {
+  width: 100%;
+}
+
+/* Single view image styling - default (mobile) */
+.project-list.viewing-single .project-img {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.project-list.viewing-single .project-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.project-list.viewing-single .project-content {
+  margin-top: 20px;
+}
+
+/* Disable hover effects in single view */
 .project-list.viewing-single .project-item:hover .project-img::before {
   background: transparent;
 }
@@ -2374,4 +2435,11 @@ color: var(--light-muted-purple); }
 
 .project-list.viewing-single .project-item:hover .project-title {
   color: var(--wet-charcoal);
+}
+
+/* Media query for larger screens */
+@media (min-width: 580px) {
+  .project-list.viewing-single .project-img {
+    width: 40%;
+  }
 }
