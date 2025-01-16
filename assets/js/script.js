@@ -220,129 +220,145 @@ window.onhashchange = function () {
 
 window.onhashchange(undefined);
 
-// Add this near the top of your script with other variable declarations
-const portfolioNavLink = document.querySelector('[data-nav-link="portfolio"]');
-
-// Modify the navigation click handler
+// add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-    // If clicking Portfolio while already on Portfolio page
-    if (this.innerHTML.toLowerCase() === 'portfolio' && 
-        document.querySelector('[data-page="portfolio"]').classList.contains('active')) {
-      // Simulate click on "All" filter button
-      filterBtn[0].click();
-      
-      // Reset view to grid
-      filterList.style.display = window.innerWidth >= 768 ? "flex" : "none";
-      filterSelectBox.style.display = window.innerWidth >= 768 ? "none" : "block";
-      goBackContainer.style.display = "none";
-      
-      // Show all project items
-      projectItems.forEach((projectItem) => {
-        projectItem.classList.add("active");
-      });
-      
-      // Hide all project contents
-      projectContents.forEach((content) => {
-        content.classList.remove("active");
-      });
-      
-      // Remove viewing-single class
-      const projectList = document.querySelector(".project-list");
-      projectList.classList.remove("viewing-single");
-      
-      return; // Skip the regular navigation handling
-    }
-
     location.hash = this.innerHTML.toLowerCase();
+
+    if (this.innerHTML.toLowerCase() === 'portfolio' && pages[i].classList.contains('active')) {
+      filterProjects('all');
+      
+      filterBtns.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase() === 'all') {
+          btn.classList.add('active');
+        }
+      });
+
+      const selectValue = document.querySelector('[data-selecct-value]');
+      if (selectValue) {
+        selectValue.textContent = 'All';
+      }
+
+      projectList.classList.remove('viewing-single');
+      goBackContainer.style.display = 'none';
+
+      const filterList = document.querySelector('.filter-list');
+      const filterSelect = document.querySelector('.filter-select-box');
+      if (filterList) filterList.style.display = '';
+      if (filterSelect) filterSelect.style.display = '';
+
+      projectItems.forEach(item => {
+        item.style.display = 'block';
+        const projectContent = item.querySelector('.project-content');
+        if (projectContent) {
+          projectContent.style.display = 'none';
+        }
+      });
+    }
   });
 }
 
-// Get the filter-list and filter-select-box elements
-const filterList = document.querySelector(".filter-list");
-const filterSelectBox = document.querySelector(".filter-select-box");
-const goBackContainer = document.querySelector(".go-back-container");
+// Project and filter functionality
+const projectItems = document.querySelectorAll('.project-item');
+const projectList = document.querySelector('.project-list');
+const goBackContainer = document.querySelector('.go-back-container');
+const filterBtns = document.querySelectorAll('[data-filter-btn]');
+const selectBtns = document.querySelectorAll('[data-select-item]');
 
-// Get all project items and project content elements
-const projectItems = document.querySelectorAll(".project-item");
-const projectContents = document.querySelectorAll(".project-content");
-
-// Variable to store the last active filter button
-let lastActiveFilterBtn = filterBtn[0]; // Default to the first filter button
-
-// Add click event listener to each filter button
-filterBtn.forEach((btn) => {
-  btn.addEventListener("click", function () {
-    lastActiveFilterBtn = this; // Store the active filter button
-  });
-});
-
-// Add click event listener to each project item
-projectItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    // Hide the filter-list and filter-select-box
-    filterList.style.display = "none";
-    filterSelectBox.style.display = "none";
-
-    // Show the go-back-container
-    goBackContainer.style.display = "flex";
-
-    // Get the data attribute that links the project item to its content
-    const projectId = item.querySelector(".project-title").textContent.toLowerCase();
-
-    // Hide all project contents
-    projectContents.forEach((content) => {
-      content.classList.remove("active");
-    });
-
-    // Remove active class from all project items
-    projectItems.forEach((projectItem) => {
-      projectItem.classList.remove("active");
-    });
-
-    // Show the clicked project item's content
-    const targetContent = document.querySelector(`[data-project-content="${projectId}"]`);
-    if (targetContent) {
-      targetContent.classList.add("active");
+// Filter function
+function filterProjects(category) {
+  projectItems.forEach(item => {
+    const itemCategory = item.dataset.category;
+    if (category === 'all' || itemCategory === category) {
+      item.classList.add('active');
+      item.style.display = 'block';
+    } else {
+      item.classList.remove('active');
+      item.style.display = 'none';
     }
+  });
+}
 
-    // Add active class to the clicked project item
-    item.classList.add("active");
+// Add click events to filter buttons
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', function() {
+    // Remove active class from all buttons and add to clicked button
+    filterBtns.forEach(btn => btn.classList.remove('active'));
+    this.classList.add('active');
 
-    // Add viewing-single class to project-list
-    const projectList = document.querySelector(".project-list");
-    projectList.classList.add("viewing-single");
+    // Filter projects
+    const category = this.textContent.toLowerCase();
+    filterProjects(category);
   });
 });
 
-// Add click event listener to the go-back-container
-goBackContainer.addEventListener("click", () => {
-  // Check screen width to determine which filter element to show
-  if (window.innerWidth >= 768) {
-    filterList.style.display = "flex";
-    filterSelectBox.style.display = "none";
-  } else {
-    filterList.style.display = "none";
-    filterSelectBox.style.display = "block";
-  }
-
-  // Hide the go-back-container
-  goBackContainer.style.display = "none";
-
-  // Hide all project contents
-  projectContents.forEach((content) => {
-    content.classList.remove("active");
+// Add click events to select items (mobile dropdown)
+selectBtns.forEach(btn => {
+  btn.addEventListener('click', function() {
+    const category = this.textContent.toLowerCase();
+    filterProjects(category);
   });
+});
 
-  // Show all project items
-  projectItems.forEach((projectItem) => {
-    projectItem.classList.add("active");
+// Project item click handling
+projectItems.forEach(item => {
+  item.addEventListener('click', function() {
+    if (!item.classList.contains('active')) return; // Don't process if item is filtered out
+
+    // Hide all other project items
+    projectItems.forEach(otherItem => {
+      if (otherItem !== item) {
+        otherItem.style.display = 'none';
+      }
+    });
+
+    // Hide filter elements
+    const filterList = document.querySelector('.filter-list');
+    const filterSelect = document.querySelector('.filter-select-box');
+    if (filterList) filterList.style.display = 'none';
+    if (filterSelect) filterSelect.style.display = 'none';
+
+    // Show back button
+    goBackContainer.style.display = 'flex';
+
+    // Add viewing-single class to project list
+    projectList.classList.add('viewing-single');
+
+    // Show project content
+    const projectContent = item.querySelector('.project-content');
+    if (projectContent) {
+      projectContent.style.display = 'block';
+    }
   });
+});
 
-  // Restore the last active filter button
-  lastActiveFilterBtn.click();
+// Back button functionality
+goBackContainer.addEventListener('click', () => {
+  // Get current active filter
+  const activeFilter = document.querySelector('[data-filter-btn].active');
+  const category = activeFilter ? activeFilter.textContent.toLowerCase() : 'all';
 
-  // Remove viewing-single class from project-list
-  const projectList = document.querySelector(".project-list");
-  projectList.classList.remove("viewing-single");
+  // Apply current filter
+  filterProjects(category);
+
+  // Show filter elements
+  const filterList = document.querySelector('.filter-list');
+  const filterSelect = document.querySelector('.filter-select-box');
+  if (filterList) filterList.style.display = '';
+  if (filterSelect) filterSelect.style.display = '';
+
+  // Hide back button
+  goBackContainer.style.display = 'none';
+
+  // Remove viewing-single class
+  projectList.classList.remove('viewing-single');
+
+  // Hide all project content
+  projectItems.forEach(item => {
+    const projectContent = item.querySelector('.project-content');
+    if (projectContent) {
+      projectContent.style.display = 'none';
+    }
+  });
 });
