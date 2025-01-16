@@ -2047,6 +2047,10 @@ color: var(--light-muted-purple); }
 
   .modal-avatar-box img { width: 80px; }
 
+  .timeline-text {
+    width: 80%;
+  }
+
 
 
   /**
@@ -2226,6 +2230,10 @@ color: var(--light-muted-purple); }
 
   .clients-item { min-width: calc(25% - 38px); }
 
+
+  .timeline-text {
+    width: 70%;
+  }
 
 
   /**
