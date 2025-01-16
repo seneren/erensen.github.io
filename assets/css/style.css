@@ -1279,11 +1279,13 @@ main {
   transition: var(--transition-1);
 }
 
-.project-item:hover .project-img::before { background: hsla(0, 0%, 0%, 0.5); }
+/* Update hover effect to only work when not viewing single project */
+.project-list:not(.viewing-single) .project-item:hover .project-img::before { 
+  background: hsla(0, 0%, 0%, 0.5); 
+}
 
 .project-item-icon-box {
   --scale: 0.8;
-
   background: var(--light-muted-purple-1);
   color: var(--purple-seduction);
   position: absolute;
@@ -1298,12 +1300,11 @@ main {
   transition: var(--transition-1);
 }
 
-.project-item:hover .project-item-icon-box {
+/* Update hover effect for icon box */
+.project-list:not(.viewing-single) .project-item:hover .project-item-icon-box {
   --scale: 1;
   opacity: 1;
 }
-
-.project-item-icon-box ion-icon { --ionicon-stroke-width: 50px; }
 
 .project-img img {
   width: 100%;
@@ -1312,10 +1313,17 @@ main {
   transition: var(--transition-1);
 }
 
-.project-item:hover img { transform: scale(1.1); }
+/* Update hover effect for image zoom */
+.project-list:not(.viewing-single) .project-item:hover img { 
+  transform: scale(1.1); 
+}
 
+/* Update hover effect for project title */
+.project-list:not(.viewing-single) .project-item:hover .project-title { 
+  color: var(--purple-seduction); 
+}
 
-.project-item:hover .project-title { color: var(--purple-seduction); }
+.project-item-icon-box ion-icon { --ionicon-stroke-width: 50px; }
 
 .project-title,
 .project-category { margin-left: 10px; }

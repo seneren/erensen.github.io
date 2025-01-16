@@ -248,6 +248,16 @@ const goBackContainer = document.querySelector(".go-back-container");
 const projectItems = document.querySelectorAll(".project-item");
 const projectContents = document.querySelectorAll(".project-content");
 
+// Variable to store the last active filter button
+let lastActiveFilterBtn = filterBtn[0]; // Default to the first filter button
+
+// Add click event listener to each filter button
+filterBtn.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    lastActiveFilterBtn = this; // Store the active filter button
+  });
+});
+
 // Add click event listener to each project item
 projectItems.forEach((item) => {
   item.addEventListener("click", () => {
@@ -279,6 +289,10 @@ projectItems.forEach((item) => {
 
     // Add active class to the clicked project item
     item.classList.add("active");
+
+    // Add viewing-single class to project-list
+    const projectList = document.querySelector(".project-list");
+    projectList.classList.add("viewing-single");
   });
 });
 
@@ -305,4 +319,11 @@ goBackContainer.addEventListener("click", () => {
   projectItems.forEach((projectItem) => {
     projectItem.classList.add("active");
   });
+
+  // Restore the last active filter button
+  lastActiveFilterBtn.click();
+
+  // Remove viewing-single class from project-list
+  const projectList = document.querySelector(".project-list");
+  projectList.classList.remove("viewing-single");
 });
