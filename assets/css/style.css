@@ -2468,39 +2468,30 @@ color: var(--light-muted-purple); }
   color: var(--dark-gray-70);
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  pointer-events: none;
 }
 
-.category-label {
+/* Style for the category label */
+.project-category.single-view .category-label {
   font-weight: var(--fw-500);
   color: var(--wet-charcoal);
-}
-
-/* Add cursor pointer to project items in grid view */
-.project-item {
-  cursor: pointer;
-}
-
-/* Remove pointer cursor when in single view */
-.project-list.viewing-single .project-item {
-  width: 100%;
   cursor: default;
 }
 
-/* Add these styles for the clickable category */
-.project-category.single-view {
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.project-category.single-view:hover {
-  color: var(--iris-euphoria);
-}
-
+/* Style for the clickable category value */
 .project-category.single-view .category-value {
   color: var(--dark-gray-70);
   transition: color 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  pointer-events: auto;
 }
 
-.project-category.single-view:hover .category-value {
+/* Hover effect only for the category value */
+.project-category.single-view .category-value:hover {
   color: var(--iris-euphoria);
 }
