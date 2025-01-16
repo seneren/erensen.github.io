@@ -1334,8 +1334,41 @@ main {
   font-weight: var(--fw-300);
 }
 
+/* Hide all project contents by default */
+.project-content {
+  padding: 10px;
+  display: none;
+}
 
+/* Show the active project content */
+.project-content.active {
+  display: block;
+}
 
+/* Hide all project items except the active one */
+.project-item:not(.active) {
+  display: none;
+}
+
+.go-back-container {
+  display: none; /* Initially hidden */
+  justify-content: flex-start; /* Align left */
+  align-items: center;
+  padding-top: -10px;
+  margin-bottom: 25px;
+  padding-left: 2px;
+  cursor: pointer;
+  position: relative; /* Adjust as needed to match filter-list position */
+}
+
+.go-back-icon {
+  font-size: 28px;
+  color: var(--dark-gray-70); /* Use your preferred color */
+}
+
+.go-back-icon:hover {
+  color: var(--iris-euphoria); /* Use your preferred hover color */
+}
 
 
 /*-----------------------------------*\
@@ -1789,203 +1822,62 @@ color: var(--light-muted-purple); }
    * #ABOUT
    */
 
-  .about .article-title { margin-bottom: 20px; }
-
-  .about-text { margin-bottom: 40px; }
-
-  /* service */
-
-  .service-item {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 18px;
-    padding: 30px;
-  }
-
-
-
-
-  .service-item-text {
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
-  }
-  
-
-  
-  .service-icon-box ion-icon {
-    margin-top: -10px;
-  }
-
-
-
-  .service-content-box { text-align: left; }
-
-  /* testimonials */
-
-  .testimonials-title {
-    margin-bottom: -10px;
-    margin-top: 40px;
-  }
-
-
-  .testimonials-title::after {
-    width: 40px;
-    height: 3px;
-  }
-
-  .testimonials-item-title {
-    margin-bottom: 7px;
-    margin-top: -4px !important;
-  }
-
-  .testimonials-list {
-    gap: 30px;
-    margin: 0 -30px;
-    padding: 30px;
-    padding-bottom: 35px;
-  }
-
-  .content-card {
-    padding: 25px;
-    padding-top: 25px;
-  }
-
-  .testimonials-avatar-box {
-    transform: translate(300px, -20px);
-    /* border-radius: 20px; */
-  }
-
-  .testimonials-avatar-box img { width: 40px; }
-
-  .testimonials-item-title {
-    margin-bottom: 10px;
-    margin-left: 0px;
-  }
-
-  .testimonials-text {
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
-  }
-
   /* testimonials modal */
 
-  .modal-container { padding: 20px; }
-
+  
   .testimonials-modal {
+    gap: 35px;
+    max-width: 680px;
+  }
+
+  .modal-avatar-box img { width: 80px; }
+
+
+
+  /**
+   * PORTFOLIO
+   */
+
+  .article-title { padding-bottom: 10px; }
+
+  .filter-select-box { display: none; }
+
+  .filter-list {
     display: flex;
     justify-content: flex-start;
-    align-items: stretch;
-    gap: 25px;
-    padding: 30px;
-    border-radius: 20px;
-  }
-
-  .modal-img-wrapper {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-  }
-
-  .modal-avatar-box {
-    border-radius: 18px;
-    margin-bottom: 0;
-  }
-
-  .modal-avatar-box img { width: 65px; }
-
-  .modal-img-wrapper > img {
-    display: block;
-    flex-grow: 1;
-    width: 35px;
-  }
-
-  /* clients */
-
-
-  .clients-list {
-    gap: 50px;
-    margin: 0 -30px;
-    padding: 25px;
-    scroll-padding-inline: 45px;
-  }
-
-  .clients-item { min-width: calc(33.33% - 35px); }
-
-
-
-  /**
-   * #RESUME
-   */
-
-  .timeline-list { margin-left: 65px; }
-
-  .timeline-item:not(:last-child)::before { left: -40px; }
-
-  .timeline-item::after {
-    height: 8px;
-    width: 8px;
-    left: -43px;
-  }
-
-
-  .timeline-text {
-    font-size: 11.5px !important;
-  }
-  
-  .timeline-details, .timeline-date {
-    font-size: 10.5px !important;
-  }
-  
-  .institution-name {
-    font-size: 12px !important;
-    font-weight: var(--fw-600) !important;
-  }
-
-
-
-
-  .skills-item:not(:last-child) { margin-bottom: 25px; }
-
-
-
-  /**
-   * #PORTFOLIO, BLOG
-   */
-
-  .project-img, .blog-banner-box { border-radius: 16px; }
-
-  .blog-posts-list { gap: 30px; }
-
-  .blog-content { padding: 25px; }
-
-
-
-  /**
-   * #CONTACT
-   */
-
-  .mapbox {
-    height: 380px;
-    border-radius: 18px;
-  }
-
-  .input-wrapper {
-    gap: 30px;
+    gap: 25px;
+    padding-left: 5px;
     margin-bottom: 30px;
   }
 
-  .form-input { padding: 15px 20px; }
-
-  textarea.form-input { margin-bottom: 30px; }
-
-  .form-btn {
-    --fs-6: 16px;
-    padding: 16px 20px;
+  .filter-item button {
+    color: var(--dark-gray);
+    font-size: var(--fs-5);
+    transition: var(--transition-1);
   }
 
-  .form-btn ion-icon { font-size: 18px; }
+  .filter-item button:hover { color: var(--dark-gray-70); }
 
+  .filter-item button.active { color: var(--purple-seduction); }
+
+  /* portfolio and blog grid */
+
+  .project-list, .blog-posts-list { grid-template-columns: 1fr 1fr; }
+
+
+
+  /**
+   * CONTACT
+   */
+
+  .input-wrapper { grid-template-columns: 1fr 1fr; }
+
+  .form-btn {
+    width: max-content;
+    margin-left: auto;
+  }
+  
 }
 
 

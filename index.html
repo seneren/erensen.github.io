@@ -691,7 +691,7 @@
           <h2 class="h2 article-title">Portfolio</h2>
         </header>
         <section class="projects">
-          <ul class="filter-list active">
+          <ul class="filter-list">
             <li class="filter-item"> <button class="active" data-filter-btn>All</button> </li>
             <li class="filter-item"> <button data-filter-btn>Vortanis Zylara</button> </li> 
             <li class="filter-item"> <button data-filter-btn>Velum Quastra Fintor</button> </li> 
@@ -699,7 +699,7 @@
             <li class="filter-item"> <button data-filter-btn>Lumivra Quentor</button> </li> 
           </ul>
 
-          <div class="filter-select-box active">
+          <div class="filter-select-box">
             <button class="filter-select" data-select>
               <div class="select-value" data-selecct-value>Select Category</div>
               <div class="select-icon">
@@ -716,6 +716,10 @@
             </ul>
           </div>
 
+          <div class="go-back-container" style="display: none;">
+            <ion-icon name="arrow-back-outline" class="go-back-icon"></ion-icon>
+          </div>
+
           <ul class="project-list">
             <li class="project-item  active" data-filter-item data-category="vortanis zylara">
               <figure class="project-img">
@@ -726,6 +730,10 @@
               </figure>
               <h3 class="project-title">Fintrix</h3>
               <p class="project-category">Vortanis Zylara</p>
+              <!-- Project Content for Fintrix -->
+              <div class="project-content" data-project-content="fintrix">
+               <p>This is the detailed content for the Fintrix project.</p>
+              </div>
             </li>
 
             <li class="project-item  active" data-filter-item data-category="velum quastra fintor">
@@ -736,7 +744,11 @@
                 <img src="./assets/images/project-2.png" alt="horizonix" loading="lazy">
               </figure>
               <h3 class="project-title">Horizonix</h3>
-              <p class="project-category">Velum Quastra Fintor</p>
+              <p class="project-category">Velum Quastra Fintor</p>  
+               <!-- Project Content for Horizontrix -->
+              <div class="project-content" data-project-content="horizonix">
+               <p>This is the detailed content for the Horizonix project.</p>
+              </div>
             </li>
 
             <li class="project-item  active" data-filter-item data-category="vortanis zylara">
@@ -748,7 +760,13 @@
               </figure>
               <h3 class="project-title">Fundara</h3>
               <p class="project-category">Vortanis Zylara</p>
+                <!-- Project Content for Fundara -->
+              <div class="project-content" data-project-content="fundara">
+               <p>This is the detailed content for the Fundara project.</p>
+              </div>
             </li>
+
+              
 
             <li class="project-item  active" data-filter-item data-category="velum quastra fintor">
               <figure class="project-img">
@@ -759,18 +777,29 @@
               </figure>
               <h3 class="project-title">Brawala</h3>
               <p class="project-category">Velum Quastra Fintor</p>
+                <!-- Project Content for Brawala -->
+              <div class="project-content" data-project-content="brawala">
+               <p>This is the detailed content for the Brawala project.</p>
+              </div>
             </li>
 
+            
             <li class="project-item  active" data-filter-item data-category="noxilum zynthera">
               <figure class="project-img">
                 <div class="project-item-icon-box">
                   <ion-icon name="eye-outline"></ion-icon>
                 </div>
-                <img src="./assets/images/project-5.png" alt="dsl." loading="lazy"> 
+                <img src="./assets/images/project-5.png" alt="dsl" loading="lazy"> 
               </figure>
               <h3 class="project-title">DSL.</h3>
               <p class="project-category">Noxilum Zynthera</p>
+                <!-- Project Content for DSL. -->
+              <div class="project-content" data-project-content="dsl">
+               <p>This is the detailed content for the DSL. project.</p>
+              </div>
             </li>
+
+            
 
             <li class="project-item  active" data-filter-item data-category="lumivra quentor">
               <figure class="project-img">
@@ -781,17 +810,26 @@
               </figure>
               <h3 class="project-title">NexiSpark</h3>
               <p class="project-category">Lumivra Quentor</p>
+                <!-- Project Content for NexiSpark -->
+              <div class="project-content" data-project-content="metaspark">
+               <p>This is the detailed content for the NexiSpark project.</p>
+              </div>
             </li>
+            
 
             <li class="project-item  active" data-filter-item data-category="noxilum zynthera">
-               <figure class="project-img">
+              <figure class="project-img">
                 <div class="project-item-icon-box">
                   <ion-icon name="eye-outline"></ion-icon>
                 </div>
                 <img src="./assets/images/project-7.png" alt="summora" loading="lazy">
               </figure>
               <h3 class="project-title">Summora</h3>
-              <p class="project-category">Noxilum Zynthera</p>
+              <p class="project-category">Noxilum Zynthera</p> 
+               <!-- Project Content for Summora -->
+              <div class="project-content" data-project-content="summora">
+               <p>This is the detailed content for the Summora project.</p>
+              </div>
             </li>
 
             <li class="project-item  active" data-filter-item data-category="lumivra quentor">
@@ -803,7 +841,13 @@
               </figure>
               <h3 class="project-title">Taskix Manora</h3>
               <p class="project-category">Lumivra Quentor</p>
+                <!-- Project Content for Taskix Manora -->
+              <div class="project-content" data-project-content="taskix manora">
+               <p>This is the detailed content for the Taskix Manora project.</p>
+              </div>
             </li>
+
+            
 
             <li class="project-item  active" data-filter-item data-category="vortanis zylara">
               <figure class="project-img">
@@ -814,6 +858,10 @@
               </figure>
               <h3 class="project-title">Arrivix</h3>
               <p class="project-category">Vortanis Zylara</p>
+                 <!-- Project Content for Arrivix -->
+              <div class="project-content" data-project-content="arrivix">
+               <p>This is the detailed content for the Arrivix project.</p>
+              </div>
             </li>
           </ul>
         </section>

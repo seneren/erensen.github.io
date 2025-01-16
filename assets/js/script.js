@@ -238,3 +238,71 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+// Get the filter-list and filter-select-box elements
+const filterList = document.querySelector(".filter-list");
+const filterSelectBox = document.querySelector(".filter-select-box");
+const goBackContainer = document.querySelector(".go-back-container");
+
+// Get all project items and project content elements
+const projectItems = document.querySelectorAll(".project-item");
+const projectContents = document.querySelectorAll(".project-content");
+
+// Add click event listener to each project item
+projectItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    // Hide the filter-list and filter-select-box
+    filterList.style.display = "none";
+    filterSelectBox.style.display = "none";
+
+    // Show the go-back-container
+    goBackContainer.style.display = "flex";
+
+    // Get the data attribute that links the project item to its content
+    const projectId = item.querySelector(".project-title").textContent.toLowerCase();
+
+    // Hide all project contents
+    projectContents.forEach((content) => {
+      content.classList.remove("active");
+    });
+
+    // Remove active class from all project items
+    projectItems.forEach((projectItem) => {
+      projectItem.classList.remove("active");
+    });
+
+    // Show the clicked project item's content
+    const targetContent = document.querySelector(`[data-project-content="${projectId}"]`);
+    if (targetContent) {
+      targetContent.classList.add("active");
+    }
+
+    // Add active class to the clicked project item
+    item.classList.add("active");
+  });
+});
+
+// Add click event listener to the go-back-container
+goBackContainer.addEventListener("click", () => {
+  // Check screen width to determine which filter element to show
+  if (window.innerWidth >= 768) {
+    filterList.style.display = "flex";
+    filterSelectBox.style.display = "none";
+  } else {
+    filterList.style.display = "none";
+    filterSelectBox.style.display = "block";
+  }
+
+  // Hide the go-back-container
+  goBackContainer.style.display = "none";
+
+  // Hide all project contents
+  projectContents.forEach((content) => {
+    content.classList.remove("active");
+  });
+
+  // Show all project items
+  projectItems.forEach((projectItem) => {
+    projectItem.classList.add("active");
+  });
+});
