@@ -145,6 +145,7 @@
   --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);
   --shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.15);
   --shadow-5: 0 24px 80px hsla(0, 0%, 0%, 0.25);
+  --shadow-cyber-magenta: 0px 8px 24px hsla(290, 97%, 28%, 0.200);
 
   /**
    * transition
@@ -1259,12 +1260,16 @@ main {
 
 .select-item button:hover { color: var(--purple-seduction); }
 
+
 .project-list {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   gap: 30px;
   margin-bottom: 10px;
+  width: 100%;
 }
+
 
 .project-item { display: none; }
 
@@ -1278,7 +1283,7 @@ main {
   100% { transform: scale(1); }
 }
 
-.project-item > a { width: 100%; }
+.project-item { width: 100%; }
 
 .project-img {
   position: relative;
@@ -1300,6 +1305,23 @@ main {
   z-index: 1;
   transition: var(--transition-1);
 }
+
+
+/* Single view styles */
+.project-title.single-view {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 20px; /* Base size for mobile */
+  font-weight: var(--fw-500);
+  color: var(--wet-charcoal);
+  z-index: 2;
+  width: max-content;
+  display: inline-block;
+  cursor: default;
+}
+
 
 /* Update hover effect to only work when not viewing single project */
 .project-list:not(.viewing-single) .project-item:hover .project-img::before { 
@@ -1390,6 +1412,100 @@ main {
 }
 
 
+
+/* Single view layout */
+.project-list.viewing-single {
+  display: block;
+}
+
+.project-list.viewing-single .project-item {
+  width: 100%;
+}
+
+/* Single view image styling - default (mobile) */
+.project-list.viewing-single .project-img {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.project-list.viewing-single .project-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.project-list.viewing-single .project-content {
+  margin-top: -10px;
+}
+
+/* Disable hover effects in single view */
+.project-list.viewing-single .project-item:hover .project-img::before {
+  background: transparent;
+}
+
+.project-list.viewing-single .project-item:hover .project-item-icon-box {
+  opacity: 0;
+}
+
+.project-list.viewing-single .project-item:hover img {
+  transform: none;
+}
+
+.project-list.viewing-single .project-item:hover .project-title {
+  color: var(--wet-charcoal);
+}
+
+
+
+/* Add styles for category in single view */
+.project-category.single-view {
+  margin-left: 0px;
+  margin-top: 20px;
+  color: var(--dark-gray-70);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  pointer-events: none;
+}
+
+/* Style for the category label "Category:" */
+.project-category.single-view .category-label {
+  font-weight: var(--fw-500);
+  color: var(--wet-charcoal);
+  cursor: default;
+  font-size: 12px;
+}
+
+/* Style for the clickable category value */
+.project-category.single-view .category-value {
+  font-size: 12px;
+  color: var(--dark-gray-70);
+  transition: color 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  pointer-events: auto;
+}
+
+/* Hover effect only for the category value */
+.project-category.single-view .category-value:hover {
+  color: var(--iris-euphoria);
+}
+
+
+/* Remove pointer cursor when in single view */
+.project-list.viewing-single .project-item {
+  width: 100%;
+  cursor: default;
+}
+
+/* Add cursor pointer to project items in grid view */
+.project-list:not(.viewing-single) .project-item.active {
+  cursor: pointer;
+}
+
 /* Back button styling */
 
 .go-back-container {
@@ -1418,6 +1534,7 @@ main {
 }
 
 
+
 /*-----------------------------------*\
   #BLOG
 \*-----------------------------------*/
@@ -1439,6 +1556,10 @@ main {
   z-index: 1;
 }
 
+.blog-post-item:hover {
+  box-shadow: var(--shadow-cyber-magenta);
+}
+
 .blog-post-item::before {
   content: "";
   position: absolute;
@@ -1447,6 +1568,15 @@ main {
   background: var(--light-muted-purple);
   z-index: -1;
 }
+
+.blog-posts-list .blog-post-item {
+  cursor: pointer; /* Make blog post items clickable */
+}
+
+.blog-posts-list .blog-post-item .blog-text:hover {
+  cursor: default; /* Make blog post items clickable */
+}
+
 
 .blog-banner-box {
   width: 100%;
@@ -1465,6 +1595,13 @@ main {
 .blog-post-item:hover .blog-banner-box img { transform: scale(1.1); }
 
 .blog-content { padding: 15px; }
+
+
+
+.blog-posts-list.viewing-single .blog-item-title {
+  font-size: 20px;
+}
+
 
 .blog-meta {
   display: flex;
@@ -1493,7 +1630,7 @@ main {
   transition: var(--transition-1);
 }
 
-.blog-post-item > a:hover .blog-item-title { color: var(--purple-seduction); }
+.blog-post-item:hover .blog-item-title { color: var(--purple-seduction); }
 
 .blog-text {
   color: var(--dark-gray);
@@ -1502,6 +1639,9 @@ main {
   line-height: 1.5;
   line-clamp: 2;
   -webkit-line-clamp: 2;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 
 
@@ -1681,12 +1821,14 @@ color: var(--light-muted-purple); }
   .content-card {
     padding-left: 25px;
   }
-  /**
-   * #PORTFOLIO, BLOG 
-   */
 
-  .project-img,
-  .blog-banner-box { height: auto; }
+  /***********
+   * #PORTFOLIO, BLOG 
+   ***********/
+
+  .project-img, .blog-banner-box { 
+    height: auto; 
+  }
 
   .go-back-container {
     transform: translate(0px, 5px);
@@ -1699,9 +1841,9 @@ color: var(--light-muted-purple); }
     gap: 20px;
   }
 
-  /* Adjust project image height for grid */
-  .project-img {
-    height: 180px;
+  .project-list.viewing-single .project-img {
+    width: 40%;
+    height: auto%;
   }
 }
 
@@ -1715,6 +1857,8 @@ color: var(--light-muted-purple); }
     grid-template-columns: 1fr 1fr; /* Two-column layout for service list */
   }
 }
+
+
 
 /**
  * responsive larger than 580px screen
@@ -1907,20 +2051,11 @@ color: var(--light-muted-purple); }
    * PORTFOLIO
    */
 
-  .project-list {
-    grid-template-columns: 1fr;
-  }
-  
-  .project-img {
-    height: auto;
-  }
  
   .article-title { padding-bottom: 10px; }
 
-  .go-back-container {
-    transform: translate(0px, -5px);
-    margin-bottom: 19px;
-  }
+
+
 
   .filter-select-box { display: none; }
 
@@ -1943,13 +2078,32 @@ color: var(--light-muted-purple); }
 
   .filter-item button.active { color: var(--purple-seduction); }
 
-  /* portfolio and blog grid */
-
-  .project-list, .blog-posts-list { grid-template-columns: 1fr 1fr; }
+  
+  
+  .project-img {
+    height: auto;
+  }
 
   .project-content {
     padding: 10px !important;
   }
+
+  .project-title.single-view {
+    font-size: 22px;
+  }
+
+  .project-list.viewing-single .project-img {
+    width: 40%;
+  }
+
+
+  .go-back-container {
+    transform: translate(0px, -5px);
+    margin-bottom: 19px;
+  }
+
+/* portfolio and blog grid */
+  .project-list, .blog-posts-list { grid-template-columns: 1fr 1fr; }
 
 
 
@@ -1965,6 +2119,8 @@ color: var(--light-muted-purple); }
   }
   
 }
+
+
 
 
 
@@ -2061,18 +2217,16 @@ color: var(--light-muted-purple); }
 
 
 
-  /**
+  /*******
    * PORTFOLIO
-   */
+   *********/
 
   .article-title { padding-bottom: 10px; }
 
-  .filter-select-box { display: none; }
 
-  .go-back-container {
-    transform: translate(0px, 0px);
-    margin-bottom: 25px;
-  }
+    /** filter settings **/
+
+  .filter-select-box { display: none; }
 
   .filter-list {
     display: flex;
@@ -2093,9 +2247,12 @@ color: var(--light-muted-purple); }
 
   .filter-item button.active { color: var(--purple-seduction); }
 
-  /* portfolio and blog grid */
 
-  .project-list, .blog-posts-list { grid-template-columns: 1fr 1fr; }
+  /** project content settings **/
+
+  .project-content {
+    font-size: 14px !important;
+  }
 
   .project-category.single-view .category-value {
     font-size: 13px !important;
@@ -2105,9 +2262,21 @@ color: var(--light-muted-purple); }
     font-size: 13px !important;
   }
 
-  .project-content {
-    font-size: 14px !important;
+  .project-title.single-view {
+    font-size: 24px;
   }
+
+  .go-back-container {
+    transform: translate(0px, 0px);
+    margin-bottom: 25px;
+  }
+
+  /* portfolio and blog grid */
+
+  .project-list, .blog-posts-list { grid-template-columns: 1fr 1fr; }
+
+
+
   /**
    * CONTACT
    */
@@ -2120,9 +2289,6 @@ color: var(--light-muted-purple); }
   }
   
 }
-
-
-
 
 
 /**
@@ -2249,6 +2415,10 @@ color: var(--light-muted-purple); }
    */
 
   .project-list { grid-template-columns: repeat(3, 1fr); }
+
+  .project-title.single-view {
+    font-size: 26px;
+  }
 
 
 
@@ -2409,172 +2579,24 @@ color: var(--light-muted-purple); }
 
 
 
-/* Single view styles */
-.project-title.single-view {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
-  font-size: 20px; /* Base size for mobile */
-  font-weight: var(--fw-500);
-  color: var(--wet-charcoal);
-  z-index: 2;
-  width: max-content;
-  display: inline-block;
-  cursor: default;
-}
-
-/* Media query adjustments */
-@media (min-width: 580px) {
-  .project-title.single-view {
-    font-size: 22px;
-  }
-}
-
-@media (min-width: 768px) {
-  .project-title.single-view {
-    font-size: 24px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .project-title.single-view {
-    font-size: 26px;
-  }
-}
 
 /* Container positioning */
 .main-content {
   position: relative;
 }
 
-.project-list {
-  position: relative;
-  width: 100%;
+
+
+
+
+.blog-posts-list.viewing-single {
+  grid-template-columns: 1fr; /* Single column layout when viewing single blog post */
 }
 
-/* Back button styling */
-.go-back-container {
-  display: none;
-  position: relative;
-  align-items: center;
-  padding-top: -10px;
-  margin-bottom: 25px;
-  padding-left: 2px;
-  height: 28px;
-  z-index: 2;
-  cursor: default;
-  pointer-events: none;
+.viewing-single .blog-text {
+  -webkit-line-clamp: unset; /* Show full text in single view */
 }
 
-.go-back-icon {
-  font-size: 28px;
-  color: var(--dark-gray-70);
-  cursor: pointer;
-  pointer-events: auto;
-}
-
-.go-back-icon:hover {
-  color: var(--iris-euphoria);
-  transition: color 0.3s ease;
-}
-
-/* Single view layout */
-.project-list.viewing-single {
-  display: block;
-}
-
-.project-list.viewing-single .project-item {
-  width: 100%;
-}
-
-/* Single view image styling - default (mobile) */
-.project-list.viewing-single .project-img {
-  width: 100%;
-  margin: 0 auto;
-}
-
-.project-list.viewing-single .project-img img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.project-list.viewing-single .project-content {
-  margin-top: -10px;
-}
-
-/* Disable hover effects in single view */
-.project-list.viewing-single .project-item:hover .project-img::before {
-  background: transparent;
-}
-
-.project-list.viewing-single .project-item:hover .project-item-icon-box {
-  opacity: 0;
-}
-
-.project-list.viewing-single .project-item:hover img {
-  transform: none;
-}
-
-.project-list.viewing-single .project-item:hover .project-title {
-  color: var(--wet-charcoal);
-}
-
-/* Media query for larger screens */
-@media (min-width: 580px) {
-  .project-list.viewing-single .project-img {
-    width: 40%;
-  }
-}
-
-/* Add styles for category in single view */
-.project-category.single-view {
-  margin-left: 0px;
-  margin-top: 20px;
-  color: var(--dark-gray-70);
-  font-size: var(--fs-6);
-  font-weight: var(--fw-300);
-  cursor: default;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  pointer-events: none;
-}
-
-/* Style for the category label */
-.project-category.single-view .category-label {
-  font-weight: var(--fw-500);
-  color: var(--wet-charcoal);
-  cursor: default;
-  font-size: 12px;
-}
-
-/* Style for the clickable category value */
-.project-category.single-view .category-value {
-  font-size: 12px;
-  color: var(--dark-gray-70);
-  transition: color 0.3s ease;
-  cursor: pointer;
-  display: inline-block;
-  pointer-events: auto;
-}
-
-/* Hover effect only for the category value */
-.project-category.single-view .category-value:hover {
-  color: var(--iris-euphoria);
-}
-
-/* Add cursor pointer to project items in grid view */
-.project-list:not(.viewing-single) .project-item.active {
-  cursor: pointer;
-}
-
-/* Remove pointer cursor when in single view */
-.project-list.viewing-single .project-item {
-  width: 100%;
-  cursor: default;
-}
 
 /* Add these styles for blog single view */
 .blog-posts-list.viewing-single .blog-post-item:not(.active) {
@@ -2584,21 +2606,33 @@ color: var(--light-muted-purple); }
 .blog-posts-list.viewing-single .blog-post-item.active {
   background: var(--white-chalk);
   box-shadow: none;
+  cursor: default;
 }
 
 .blog-posts-list.viewing-single .blog-post-item.active::before {
   background: var(--white-chalk);
 }
 
-
-.blog-text {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
+.blog-posts-list.viewing-single .blog-text {
+  width: 100%; /* Make blog-text span full width */
 }
 
-.viewing-single .blog-text {
-  -webkit-line-clamp: unset; /* Show full text in single view */
+
+.blog-posts-list.viewing-single .blog-banner-box {
+  width: 50%;
+  transform: translate(50%, -53px);
+}
+
+.blog-posts-list.viewing-single .blog-banner-box img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: scale(1.0);
+}
+
+
+.blog-posts-list.viewing-single .blog-post-item:hover .blog-item-title{
+  color: inherit;
 }
 
 /* Back button styling for blog */
@@ -2627,33 +2661,11 @@ color: var(--light-muted-purple); }
   transition: color 0.3s ease;
 }
 
-.blog-posts-list.viewing-single .blog-text {
-  width: 100%; /* Make blog-text span full width */
-}
-
-.blog-posts-list.viewing-single {
-  grid-template-columns: 1fr; /* Single column layout when viewing single blog post */
-}
-
-.blog-posts-list.viewing-single .blog-banner-box {
-  width: 50%;
-  transform: translate(50%, -53px);
-}
-
-.blog-posts-list.viewing-single .blog-banner-box img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  transform: scale(1.0);
-}
-
-.blog-posts-list.viewing-single .blog-content {
-  margin-top: -20px; /* Example: Move up by 50px */
-}
 
 @media (min-width: 768px) {
   .service-list {
     grid-template-columns: 1fr 1fr;
   }
 }
+
 
