@@ -1929,7 +1929,7 @@ color: var(--light-muted-purple); }
 
   .project-list.viewing-single .project-img {
     width: 40%;
-    height: auto%;
+    height: auto;
   }
 }
 
