@@ -499,3 +499,66 @@ goBackContainer.addEventListener('click', () => {
     category.remove();
   });
 });
+
+// Blog functionality
+const blogList = document.querySelector('.blog-posts-list');
+const blogItems = document.querySelectorAll('.blog-post-item');
+
+// Create and insert back button
+const blogBackContainer = document.createElement('div');
+blogBackContainer.className = 'blog-back-container';
+blogBackContainer.innerHTML = '<ion-icon name="arrow-back-outline" class="go-back-icon"></ion-icon>';
+document.querySelector('.blog-posts').insertBefore(blogBackContainer, blogList);
+
+// Add click handler for blog posts
+blogItems.forEach(item => {
+  item.addEventListener('click', function(e) {
+    if (blogList.classList.contains('viewing-single')) {
+      return;
+    }
+
+    // Hide other blog posts
+    blogItems.forEach(otherItem => {
+      if (otherItem !== item) {
+        otherItem.style.display = 'none';
+      }
+    });
+
+    // Show back button
+    blogBackContainer.style.display = 'flex';
+
+    // Add viewing-single class
+    blogList.classList.add('viewing-single');
+    item.classList.add('active');
+  });
+});
+
+// Back button functionality
+blogBackContainer.addEventListener('click', () => {
+  // Show all blog posts
+  blogItems.forEach(item => {
+    item.style.display = 'block';
+    item.classList.remove('active');
+  });
+
+  // Hide back button
+  blogBackContainer.style.display = 'none';
+
+  // Remove viewing-single class
+  blogList.classList.remove('viewing-single');
+});
+
+// Update navigation handler for blog section
+navigationLinks.forEach(link => {
+  link.addEventListener("click", function() {
+    if (this.innerHTML.toLowerCase() === 'blog') {
+      // Reset blog view when navigating to blog section
+      blogItems.forEach(item => {
+        item.style.display = 'block';
+        item.classList.remove('active');
+      });
+      blogBackContainer.style.display = 'none';
+      blogList.classList.remove('viewing-single');
+    }
+  });
+});
