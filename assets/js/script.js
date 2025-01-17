@@ -562,3 +562,13 @@ navigationLinks.forEach(link => {
     }
   });
 });
+
+// Prevent clicking on blog-text when all blog posts are displayed
+blogItems.forEach(item => {
+  const blogText = item.querySelector('.blog-text');
+  if (blogText) {
+    blogText.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent event from bubbling up to parent
+    });
+  }
+});
