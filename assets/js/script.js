@@ -584,19 +584,38 @@ document.querySelectorAll('.timeline-item').forEach(item => {
   // Create a clone to measure the full height
   const clone = text.cloneNode(true);
   clone.style.maxHeight = 'none';
-  clone.style.opacity = '0';
+  clone.style.opacity = '1';  // Make it visible to measure correctly
   clone.style.position = 'absolute';
-  clone.style.visibility = 'hidden';
+  clone.style.visibility = 'visible';  // Make it visible to measure correctly
+  clone.style.width = text.offsetWidth + 'px';  // Match the original width
+  clone.style.left = '-9999px';  // Move off-screen
   clone.classList.add('expanded');
-  document.body.appendChild(clone);
   
-  // Get the full height and store it as a CSS variable
-  const fullHeight = clone.offsetHeight;
-  text.style.setProperty('--expanded-height', `${fullHeight}px`);
-  document.body.removeChild(clone);
+  // Temporarily append to get proper height
+  text.parentNode.appendChild(clone);
+  
+  // Get the full height including wrapped text
+  const fullHeight = clone.scrollHeight;
+  text.style.setProperty('--expanded-height', `${fullHeight + 30}px`); // Increased padding
+  
+  // Clean up
+  text.parentNode.removeChild(clone);
 
   toggle.addEventListener('click', () => {
     text.classList.toggle('expanded');
     toggle.textContent = text.classList.contains('expanded') ? '- Hide details' : '+ View details';
+    
+    // Recalculate height after a small delay if expanding
+    if (text.classList.contains('expanded')) {
+      setTimeout(() => {
+        const newClone = text.cloneNode(true);
+        newClone.style.cssText = clone.style.cssText;
+        newClone.classList.add('expanded');
+        text.parentNode.appendChild(newClone);
+        const newHeight = newClone.scrollHeight;
+        text.style.setProperty('--expanded-height', `${newHeight + 30}px`);
+        text.parentNode.removeChild(newClone);
+      }, 50);
+    }
   });
 });
