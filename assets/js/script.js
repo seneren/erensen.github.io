@@ -599,7 +599,7 @@ document.querySelectorAll('.timeline-item').forEach(item => {
   
   // Add extra padding based on content type
   const hasBullets = clone.querySelector('li');
-  const extraPadding = hasBullets ? 30 : 45;
+  const extraPadding = hasBullets ? 40 : 45;
   
   text.style.setProperty('--expanded-height', `${fullHeight + extraPadding}px`);
   
