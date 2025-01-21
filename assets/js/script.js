@@ -572,3 +572,31 @@ blogItems.forEach(item => {
     });
   }
 });
+
+document.querySelectorAll('.timeline-item').forEach(item => {
+  const text = item.querySelector('.timeline-text');
+  
+  const toggle = document.createElement('div');
+  toggle.className = 'timeline-toggle';
+  toggle.textContent = '+ View details';
+  item.insertBefore(toggle, text);
+
+  // Create a clone to measure the full height
+  const clone = text.cloneNode(true);
+  clone.style.maxHeight = 'none';
+  clone.style.opacity = '0';
+  clone.style.position = 'absolute';
+  clone.style.visibility = 'hidden';
+  clone.classList.add('expanded');
+  document.body.appendChild(clone);
+  
+  // Get the full height and store it as a CSS variable
+  const fullHeight = clone.offsetHeight;
+  text.style.setProperty('--expanded-height', `${fullHeight}px`);
+  document.body.removeChild(clone);
+
+  toggle.addEventListener('click', () => {
+    text.classList.toggle('expanded');
+    toggle.textContent = text.classList.contains('expanded') ? '- Hide details' : '+ View details';
+  });
+});
