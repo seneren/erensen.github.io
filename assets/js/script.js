@@ -584,11 +584,11 @@ document.querySelectorAll('.timeline-item').forEach(item => {
   // Create a clone to measure the full height
   const clone = text.cloneNode(true);
   clone.style.maxHeight = 'none';
-  clone.style.opacity = '1';  // Make it visible to measure correctly
+  clone.style.opacity = '1';
   clone.style.position = 'absolute';
-  clone.style.visibility = 'visible';  // Make it visible to measure correctly
-  clone.style.width = text.offsetWidth + 'px';  // Match the original width
-  clone.style.left = '-9999px';  // Move off-screen
+  clone.style.visibility = 'visible';
+  clone.style.width = text.offsetWidth + 'px';
+  clone.style.left = '-9999px';
   clone.classList.add('expanded');
   
   // Temporarily append to get proper height
@@ -596,26 +596,47 @@ document.querySelectorAll('.timeline-item').forEach(item => {
   
   // Get the full height including wrapped text
   const fullHeight = clone.scrollHeight;
-  text.style.setProperty('--expanded-height', `${fullHeight + 30}px`); // Increased padding
+  
+  // Add extra padding based on content type
+  const hasBullets = clone.querySelector('li');
+  const extraPadding = hasBullets ? 30 : 45;
+  
+  text.style.setProperty('--expanded-height', `${fullHeight + extraPadding}px`);
   
   // Clean up
   text.parentNode.removeChild(clone);
 
   toggle.addEventListener('click', () => {
+    const isExpanding = !text.classList.contains('expanded');
     text.classList.toggle('expanded');
-    toggle.textContent = text.classList.contains('expanded') ? '- Hide details' : '+ View details';
-    
-    // Recalculate height after a small delay if expanding
-    if (text.classList.contains('expanded')) {
-      setTimeout(() => {
-        const newClone = text.cloneNode(true);
-        newClone.style.cssText = clone.style.cssText;
-        newClone.classList.add('expanded');
-        text.parentNode.appendChild(newClone);
-        const newHeight = newClone.scrollHeight;
-        text.style.setProperty('--expanded-height', `${newHeight + 30}px`);
-        text.parentNode.removeChild(newClone);
-      }, 50);
+    toggle.textContent = isExpanding ? '- Hide details' : '+ View details';
+
+    // Handle staggered animations
+    if (hasBullets) {
+      const items = text.querySelectorAll('li');
+      items.forEach((item, index) => {
+        if (isExpanding) {
+          // Expanding: bottom to top
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          }, index * 100);
+        } else {
+          // Collapsing: top to bottom
+          const delay = (items.length - 1 - index) * 100;
+          setTimeout(() => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(-10px)';
+          }, delay);
+        }
+      });
+    } else {
+      // For non-bulleted text, animate as a single block
+      if (isExpanding) {
+        setTimeout(() => {
+          text.style.opacity = '1';
+        }, 200);
+      }
     }
   });
 });
