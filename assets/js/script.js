@@ -583,24 +583,23 @@ document.querySelectorAll('.timeline-item').forEach(item => {
 
   // Create a clone to measure the full height
   const clone = text.cloneNode(true);
-  clone.style.maxHeight = 'none';
-  clone.style.opacity = '1';
-  clone.style.position = 'absolute';
-  clone.style.visibility = 'visible';
-  clone.style.width = text.offsetWidth + 'px';
-  clone.style.left = '-9999px';
-  clone.classList.add('expanded');
+  clone.style.cssText = `
+    position: absolute;
+    visibility: visible;
+    max-height: none;
+    width: ${text.offsetWidth}px;
+    left: -9999px;
+  `;
   
-  // Temporarily append to get proper height
+  // Append clone to parent to get accurate height
   text.parentNode.appendChild(clone);
   
   // Get the full height including wrapped text
   const fullHeight = clone.scrollHeight;
-  
-  // Add extra padding based on content type
   const hasBullets = clone.querySelector('li');
-  const extraPadding = hasBullets ? 40 : 45;
+  const extraPadding = hasBullets ? 180 : 180; // Increased padding
   
+  // Set the expanded height
   text.style.setProperty('--expanded-height', `${fullHeight + extraPadding}px`);
   
   // Clean up
@@ -611,32 +610,23 @@ document.querySelectorAll('.timeline-item').forEach(item => {
     text.classList.toggle('expanded');
     toggle.textContent = isExpanding ? '- Hide details' : '+ View details';
 
-    // Handle staggered animations
+    // Handle animations
     if (hasBullets) {
       const items = text.querySelectorAll('li');
       items.forEach((item, index) => {
         if (isExpanding) {
-          // Expanding: bottom to top
           setTimeout(() => {
             item.style.opacity = '1';
             item.style.transform = 'translateY(0)';
-          }, index * 100);
+          }, 100 + (index * 50));
         } else {
-          // Collapsing: top to bottom
-          const delay = (items.length - 1 - index) * 100;
+          const delay = (items.length - 1 - index) * 50;
           setTimeout(() => {
             item.style.opacity = '0';
             item.style.transform = 'translateY(-10px)';
           }, delay);
         }
       });
-    } else {
-      // For non-bulleted text, animate as a single block
-      if (isExpanding) {
-        setTimeout(() => {
-          text.style.opacity = '1';
-        }, 200);
-      }
     }
   });
 });
