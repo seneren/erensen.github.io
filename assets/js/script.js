@@ -288,13 +288,12 @@ const selectBtns = document.querySelectorAll('[data-select-item]');
 // Filter function
 function filterProjects(category) {
   projectItems.forEach(item => {
-    const itemCategory = item.dataset.category;
+    const itemCategories = item.dataset.category.split(',').map(cat => cat.trim());
     const projectContent = item.querySelector('.project-content');
     
-    if (category === 'all' || itemCategory === category) {
+    if (category === 'all' || itemCategories.includes(category)) {
       item.classList.add('active');
       item.style.display = 'block';
-      // Always hide project content when filtering
       if (projectContent) {
         projectContent.style.display = 'none';
       }
@@ -319,7 +318,11 @@ filterBtns.forEach(btn => {
     // Update mobile select value
     const selectValue = document.querySelector('[data-selecct-value]');
     if (selectValue) {
-      selectValue.textContent = this.textContent;
+      // Capitalize the first letter of each word
+      const capitalizedCategory = category.split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+      selectValue.textContent = capitalizedCategory;
     }
 
     // Update select buttons state
@@ -363,6 +366,14 @@ selectBtns.forEach(btn => {
 // Update the project item click handler
 projectItems.forEach(item => {
   item.addEventListener('click', function(e) {
+    // Prevent click if we're not in single view and clicked on category
+    if (!projectList.classList.contains('viewing-single') && 
+        e.target.closest('.project-category')) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+
     if (projectList.classList.contains('viewing-single')) {
       e.preventDefault();
       e.stopPropagation();
@@ -412,76 +423,96 @@ projectItems.forEach(item => {
     if (projectContent) {
       projectContent.style.display = 'block';
       
-      // Move and update category
       const originalCategory = item.querySelector('.project-category');
       originalCategory.style.visibility = 'hidden';
       
-      // Create new category element
-      const categoryText = originalCategory.textContent;
+      // Create new category element with multiple categories
+      const categories = item.dataset.category.split(',').map(cat => cat.trim());
       const categoryContainer = document.createElement('p');
       categoryContainer.className = 'project-category single-view';
-      categoryContainer.innerHTML = `<span class="category-label">Category: </span><span class="category-value">${categoryText}</span>`;
-      categoryContainer.style.cursor = 'pointer';
       
-      // Insert after project content
+      // Create individual category spans - simplified version
+      const categorySpans = categories.map((cat, index) => {
+        const isLast = index === categories.length - 1;
+        return `<span class="category-value" data-category="${cat}" style="cursor: pointer;">${cat}${!isLast ? ', ' : ''}</span>`;
+      }).join('');
+      
+      categoryContainer.innerHTML = `<span class="category-label">Category: </span>${categorySpans}`;
       projectContent.appendChild(categoryContainer);
 
-      // Add click handler for the category
-      categoryContainer.addEventListener('click', () => {
-        // Get the category text (removing "Category: " prefix)
-        const category = categoryText.toLowerCase();
-        
-        // First navigate to the portfolio page
-        location.hash = 'portfolio';
-        
-        // Wait for the navigation to complete
-        setTimeout(() => {
-          // Remove single view elements
-          const singleViewTitle = document.querySelector('.project-title.single-view');
-          if (singleViewTitle) {
-            singleViewTitle.remove();
-          }
+      // Add click handlers for each category span
+      categoryContainer.querySelectorAll('.category-value').forEach(catSpan => {
+        catSpan.style.pointerEvents = 'auto'; // Enable clicking
+        catSpan.addEventListener('click', (e) => {
+          e.stopPropagation(); // Prevent event bubbling
+          const category = catSpan.dataset.category;
           
-          // Show all original titles and categories
-          document.querySelectorAll('.project-title, .project-category').forEach(el => {
-            el.style.visibility = '';
-          });
+          // Navigate to portfolio and filter
+          location.hash = 'portfolio';
           
-          // Remove single view categories
-          document.querySelectorAll('.project-category.single-view').forEach(el => {
-            el.remove();
-          });
-          
-          // Show filter elements
-          const filterList = document.querySelector('.filter-list');
-          const filterSelect = document.querySelector('.filter-select-box');
-          if (filterList) filterList.style.display = '';
-          if (filterSelect) filterSelect.style.display = '';
-          
-          // Hide back button
-          goBackContainer.style.display = 'none';
-          
-          // Remove viewing-single class
-          projectList.classList.remove('viewing-single');
-          
-          // Filter projects by the clicked category
-          filterProjects(category);
-          
-          // Update filter buttons UI
-          filterBtns.forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.textContent.toLowerCase() === category) {
-              btn.classList.add('active');
+          setTimeout(() => {
+            // Remove single view elements
+            const singleViewTitle = document.querySelector('.project-title.single-view');
+            if (singleViewTitle) {
+              singleViewTitle.remove();
             }
-          });
-          
-          // Update select value for mobile
-          const selectValue = document.querySelector('[data-selecct-value]');
-          if (selectValue) {
-            selectValue.textContent = categoryText;
-          }
-        }, 100); // Small delay to ensure navigation completes
+            
+            // Show all original titles and categories
+            document.querySelectorAll('.project-title, .project-category').forEach(el => {
+              el.style.visibility = '';
+            });
+            
+            // Remove single view categories
+            document.querySelectorAll('.project-category.single-view').forEach(el => {
+              el.remove();
+            });
+            
+            // Show filter elements
+            const filterList = document.querySelector('.filter-list');
+            const filterSelect = document.querySelector('.filter-select-box');
+            if (filterList) filterList.style.display = '';
+            if (filterSelect) filterSelect.style.display = '';
+            
+            // Hide back button
+            goBackContainer.style.display = 'none';
+            
+            // Remove viewing-single class
+            projectList.classList.remove('viewing-single');
+            
+            // Filter projects by the clicked category
+            filterProjects(category);
+            
+            // Update filter buttons UI
+            filterBtns.forEach(btn => {
+              btn.classList.remove('active');
+              if (btn.textContent.toLowerCase() === category) {
+                btn.classList.add('active');
+              }
+            });
+            
+            // Update select value for mobile
+            const selectValue = document.querySelector('[data-selecct-value]');
+            if (selectValue) {
+              // Capitalize the first letter of each word
+              const capitalizedCategory = category.split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+              selectValue.textContent = capitalizedCategory;
+            }
+          }, 100);
+        });
       });
+    }
+  });
+});
+
+// Add this to prevent category clicks when not in single view
+document.querySelectorAll('.project-category').forEach(category => {
+  category.addEventListener('click', (e) => {
+    if (!projectList.classList.contains('viewing-single')) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
     }
   });
 });
