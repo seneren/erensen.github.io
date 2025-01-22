@@ -305,7 +305,7 @@ function filterProjects(category) {
   });
 }
 
-// Add click events to filter buttons
+// Update filter buttons click handler
 filterBtns.forEach(btn => {
   btn.addEventListener('click', function() {
     // Remove active class from all buttons and add to clicked button
@@ -315,13 +315,47 @@ filterBtns.forEach(btn => {
     // Filter projects
     const category = this.textContent.toLowerCase();
     filterProjects(category);
+
+    // Update mobile select value
+    const selectValue = document.querySelector('[data-selecct-value]');
+    if (selectValue) {
+      selectValue.textContent = this.textContent;
+    }
+
+    // Update select buttons state
+    selectBtns.forEach(selectBtn => {
+      if (selectBtn.textContent.toLowerCase() === category) {
+        selectBtn.classList.add('active');
+      } else {
+        selectBtn.classList.remove('active');
+      }
+    });
   });
 });
 
-// Add click events to select items (mobile dropdown)
+// Update select items handler (mobile dropdown)
 selectBtns.forEach(btn => {
   btn.addEventListener('click', function() {
     const category = this.textContent.toLowerCase();
+    
+    // Update filter buttons state
+    filterBtns.forEach(filterBtn => {
+      if (filterBtn.textContent.toLowerCase() === category) {
+        filterBtn.classList.add('active');
+      } else {
+        filterBtn.classList.remove('active');
+      }
+    });
+
+    // Update select buttons state
+    selectBtns.forEach(selectBtn => {
+      if (selectBtn === this) {
+        selectBtn.classList.add('active');
+      } else {
+        selectBtn.classList.remove('active');
+      }
+    });
+
     filterProjects(category);
   });
 });
