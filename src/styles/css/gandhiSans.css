@@ -1,0 +1,49 @@
+/**
+* @license
+*
+* Font Family: GandhiSans
+* © 2024 Indian Type Foundry
+*
+* Font Styles:
+* GandhiSans Regular
+* GandhiSans Italic
+* GandhiSans Bold
+* GandhiSans Bold Italic
+*
+*/
+
+@font-face {
+    font-family: 'GandhiSans';
+    src: local('GandhiSans-Regular'),
+         url('/public/fonts/GandhiSans-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'GandhiSans';
+    src: local('GandhiSans-Italic'),
+         url('/public/fonts/GandhiSans-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'GandhiSans';
+    src: local('GandhiSans-Bold'),
+         url('/public/fonts/GandhiSans-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'GandhiSans';
+    src: local('GandhiSans-BoldItalic'),
+         url('/public/fonts/GandhiSans-BoldItalic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: block;
+} 
