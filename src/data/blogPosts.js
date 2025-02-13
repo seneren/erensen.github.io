@@ -93,7 +93,7 @@ export const blogPosts = [
       },
       {
         type: "list",
-        data: "Beyond off-the-shelf models, Hugging Face's pipelines let you deploy models with just a few lines of code\nIntegrates seamlessly with PyTorch and TensorFlow for custom fine-tuning\nModel Hub offers niche models for medical/financial NLP"
+        data: "Beyond off-the-shelf models, Hugging Face's pipelines let you deploy models with just a few lines of code, integrates seamlessly with PyTorch and TensorFlow for custom fine-tuning. \nModel Hub offers niche models for medical/financial NLP"
       },
       { type: "spacer" },
       {
