@@ -21,6 +21,8 @@ coverage/
 # OS generated files
 .DS_Store
 Thumbs.db
+.gitignore
+
 
 # Environment variables
 .env
